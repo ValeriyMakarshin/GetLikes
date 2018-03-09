@@ -1,0 +1,75 @@
+ext {
+    versions = [
+            support   : '27.1.0',
+            constraint: '1.1.0-beta5',
+            kotlin    : '1.2.30',
+            rxjava    : '2.1.4',
+            rxandroid : '2.0.1',
+            retrofit  : '2.3.0',
+            okHttp    : '3.9.0',
+            espresso  : '3.0.1',
+            dagger    : '2.11',
+            stetho    : '1.5.0',
+            test      : '1.0.1',
+            junit     : '4.12',
+            mockito   : '2.11.0',
+            mockitoK  : '1.5.0'
+    ]
+    supportDeps = [
+            appcompatV7 : "com.android.support:appcompat-v7:$versions.support",
+            design      : "com.android.support:design:$versions.support",
+            cardview    : "com.android.support:cardview-v7:$versions.support",
+            recyclerView: "com.android.support:recyclerview-v7:$versions.support",
+            support     : "com.android.support:support-v4:$versions.support",
+            annotations : "com.android.support:support-annotations:$versions.support",
+            constraint  : "com.android.support.constraint:constraint-layout:$versions.constraint"
+    ]
+    kotlin = [
+            stdlib: "org.jetbrains.kotlin:kotlin-stdlib:$versions.kotlin",
+            jre7  : "org.jetbrains.kotlin:kotlin-stdlib-jre7:$versions.kotlin",
+    ]
+    rxJava = [
+            rxJava   : "io.reactivex.rxjava2:rxjava:$versions.rxjava",
+            rxAndroid: "io.reactivex.rxjava2:rxandroid:$versions.rxandroid"
+    ]
+    retrofit = [
+            retrofit     : "com.squareup.retrofit2:retrofit:$versions.retrofit",
+            rxAdapter    : "com.squareup.retrofit2:adapter-rxjava2:$versions.retrofit",
+            gsonConverter: "com.squareup.retrofit2:converter-gson:$versions.retrofit"
+    ]
+    okHttp = [
+            logger: "com.squareup.okhttp3:logging-interceptor:$versions.okHttp",
+            self  : "com.squareup.okhttp3:okhttp:$versions.okHttp"
+    ]
+    stetho = [
+            stetho       : "com.facebook.stetho:stetho:$versions.stetho",
+            okhttp3      : "com.facebook.stetho:stetho-okhttp3:$versions.stetho",
+            urlconnection: "com.facebook.stetho:stetho-urlconnection:$versions.stetho"
+    ]
+    tests = [
+            junit     : "junit:junit:$versions.junit",
+            testRunner: "com.android.support.test:runner:$versions.test",
+            rules     : "com.android.support.test:rules:$versions.test",
+//            mockito   : "org.mockito:mockito-core:$versions.mockito",
+    ]
+    kotlinTest = [
+            test         : "org.jetbrains.kotlin:kotlin-test:$versions.kotlin",
+            testJUnit    : "org.jetbrains.kotlin:kotlin-test-junit:$versions.kotlin",
+            mockitoKotlin: "com.nhaarman:mockito-kotlin:$versions.mockitoK"
+    ]
+    androidTests = [
+            espressoCore   : "com.android.support.test.espresso:espresso-core:$versions.espresso",
+            espressoIntents: "com.android.support.test.espresso:espresso-intents:$versions.espresso",
+            espressoContrib: "com.android.support.test.espresso:espresso-contrib:$versions.espresso",
+    ]
+
+    supportLibs = supportDeps.values()
+    kotlinLibs = kotlin.values()
+    rxJavaLibs = rxJava.values()
+    retrofitLibs = retrofit.values()
+    okHttpLibs = okHttp.values()
+    stethoLibs = stetho.values()
+    testsLibs = tests.values()
+    kotlinTestLibs = kotlinTest.values() + kotlinLibs + testsLibs
+    androidTestsLibs = androidTests.values() + supportLibs + testsLibs + kotlinTestLibs
+}
