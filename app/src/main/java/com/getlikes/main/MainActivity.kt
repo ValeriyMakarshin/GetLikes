@@ -5,7 +5,8 @@ import com.getlikes.core.ActivityInfo
 import com.getlikes.core.BaseActivity
 
 class MainActivity : BaseActivity<MainPresentationModel>() {
-    override val activityInfo: ActivityInfo = ActivityInfo(R.layout.activity_main)
+    override val activityInfo: ActivityInfo
+        get() = ActivityInfo(R.layout.activity_main)
 
     override fun providePresentationModel(): MainPresentationModel = MainPresentationModel()
 

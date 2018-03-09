@@ -1,6 +1,15 @@
 <resources>
     <string name="app_name">Get Likes</string>
+
     <string name="get_started">Get started</string>
     <string name="get_free_likes">Get 100 Free Likes and access to Popular Hashtags</string>
     <string name="just_sign_in_instagram">Just Sign In with Instagram</string>
+
+    <string name="get_likes">Get Likes</string>
+    <string name="earn_coins">Earn coins</string>
+    <string name="hash_tags">Hashtags</string>
+
+    <string name="select_photo">Please select one of your posts to get likes</string>
+    <string name="you_have">You only have</string>
+
 </resources>
