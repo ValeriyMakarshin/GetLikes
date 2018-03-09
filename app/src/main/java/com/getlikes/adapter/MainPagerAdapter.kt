@@ -22,7 +22,7 @@ class MainPagerAdapter(private val fm: FragmentManager,
     private val fragments: Array<BaseFragment<*>>
 
     init {
-        fragments = if (fm.fragments == null) {
+        fragments = if (fm.fragments.size == 0) {
             arrayOf(
                 ChoiceFragment(),
                 HashTagsFragment(),
