@@ -19,7 +19,7 @@ class MainPagerAdapter(private val fm: FragmentManager,
         val TITLES = intArrayOf(R.string.get_likes, R.string.hash_tags, R.string.earn_coins)
     }
 
-    private val fragments: Array<BaseFragment<*>>
+    private val fragments: Array<BaseFragment<*, *>>
 
     init {
         fragments = if (fm.fragments.size == 0) {
@@ -29,9 +29,9 @@ class MainPagerAdapter(private val fm: FragmentManager,
                 EarnCoinsFragment())
         } else {
             arrayOf(
-                getFragmentFromManager(ChoiceFragment::class.java) as BaseFragment<*>,
-                getFragmentFromManager(HashTagsFragment::class.java) as BaseFragment<*>,
-                getFragmentFromManager(EarnCoinsFragment::class.java) as BaseFragment<*>)
+                getFragmentFromManager(ChoiceFragment::class.java) as BaseFragment<*, *>,
+                getFragmentFromManager(HashTagsFragment::class.java) as BaseFragment<*, *>,
+                getFragmentFromManager(EarnCoinsFragment::class.java) as BaseFragment<*, *>)
         }
 
     }
