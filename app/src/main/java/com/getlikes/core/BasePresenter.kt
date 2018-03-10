@@ -2,9 +2,8 @@ package com.getlikes.core
 
 import android.os.Bundle
 import android.support.annotation.CallSuper
-import com.arellomobile.mvp.MvpPresenter
 
-open class BasePresenter<V : BaseContract.View> : MvpPresenter<V>(), BaseContract.Presenter<V> {
+open class BasePresenter<V : BaseContract.View> : BaseContract.Presenter<V> {
     var view: V? = null
     var bundle: Bundle? = null
 

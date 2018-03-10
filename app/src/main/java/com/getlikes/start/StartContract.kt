@@ -5,5 +5,7 @@ import com.getlikes.core.BaseContract
 interface StartContract {
     interface View : BaseContract.View
 
-    interface Presenter : BaseContract.Presenter<View>
+    interface Presenter : BaseContract.Presenter<View> {
+        fun goToLogin()
+    }
 }

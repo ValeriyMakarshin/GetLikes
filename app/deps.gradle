@@ -10,6 +10,8 @@ ext {
             espresso  : '3.0.1',
             dagger    : '2.11',
             stetho    : '1.5.0',
+            kodein    : '4.1.0',
+            moxy      : '1.5.3',
             test      : '1.0.1',
             junit     : '4.12',
             mockito   : '2.11.0',
@@ -46,10 +48,19 @@ ext {
             okhttp3      : "com.facebook.stetho:stetho-okhttp3:$versions.stetho",
             urlconnection: "com.facebook.stetho:stetho-urlconnection:$versions.stetho"
     ]
+    kodein = [
+            kodein    : "com.github.salomonbrys.kodein:kodein:$versions.kodein",
+            kodeinAndr: "com.github.salomonbrys.kodein:kodein-android:$versions.kodein"
+    ]
+    moxy = [
+            moxy      : "com.arello-mobile:moxy:$versions.moxy",
+            moxyCompat: "com.arello-mobile:moxy-app-compat:$versions.moxy"
+    ]
+
     tests = [
             junit     : "junit:junit:$versions.junit",
             testRunner: "com.android.support.test:runner:$versions.test",
-            rules     : "com.android.support.test:rules:$versions.test",
+            rules     : "com.android.support.test:rules:$versions.test"
 //            mockito   : "org.mockito:mockito-core:$versions.mockito",
     ]
     kotlinTest = [
@@ -69,6 +80,8 @@ ext {
     retrofitLibs = retrofit.values()
     okHttpLibs = okHttp.values()
     stethoLibs = stetho.values()
+    kodeinLibs = kodein.values()
+    moxyLibs = moxy.values()
     testsLibs = tests.values()
     kotlinTestLibs = kotlinTest.values() + kotlinLibs + testsLibs
     androidTestsLibs = androidTests.values() + supportLibs + testsLibs + kotlinTestLibs

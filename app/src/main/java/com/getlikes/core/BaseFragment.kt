@@ -1,14 +1,13 @@
 package com.getlikes.core
 
 import android.os.Bundle
+import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
-import com.arellomobile.mvp.MvpAppCompatFragment
 
-
-abstract class BaseFragment<V : BaseContract.View, P : BaseContract.Presenter<V>> :
-    MvpAppCompatFragment() {
+abstract class BaseFragment<in V : BaseContract.View, P : BaseContract.Presenter<V>> :
+    Fragment() {
 
     abstract val activityInfo: ActivityInfo
 
@@ -28,5 +27,10 @@ abstract class BaseFragment<V : BaseContract.View, P : BaseContract.Presenter<V>
     }
 
     protected open fun viewInit() {
+    }
+
+    override fun onDestroyView() {
+        presenter.detach()
+        super.onDestroyView()
     }
 }
