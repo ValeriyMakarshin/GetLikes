@@ -4,10 +4,10 @@ import com.getlikes.R
 import com.getlikes.core.ActivityInfo
 import com.getlikes.core.BaseActivity
 
-class LoginActivity : BaseActivity<LoginPresentationModel>() {
+class LoginActivity : BaseActivity<LoginContract.View, LoginContract.Presenter>(),
+    LoginContract.View {
+
     override val activityInfo: ActivityInfo
         get() = ActivityInfo(R.layout.activity_login)
-
-    override fun providePresentationModel(): LoginPresentationModel = LoginPresentationModel()
 
 }

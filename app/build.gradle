@@ -31,6 +31,10 @@ android {
     }
 }
 
+kapt {
+    generateStubs = true
+}
+
 apply from: 'deps.gradle'
 
 dependencies {
@@ -42,10 +46,14 @@ dependencies {
     implementation okHttpLibs
     implementation stethoLibs
 
-    implementation 'me.dmdev.rxpm:rxpm:1.1.2'
+    implementation 'com.arello-mobile:moxy:1.5.3'
+    implementation 'com.arello-mobile:moxy-app-compat:1.5.3'
+
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
         transitive = true
     }
+
+    kapt 'com.arello-mobile:moxy-compiler:1.5.3'
 
     testImplementation kotlinTestLibs
 

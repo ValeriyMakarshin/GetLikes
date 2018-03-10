@@ -1,16 +1,15 @@
 package com.getlikes.core
 
-import android.annotation.SuppressLint
 import android.os.Bundle
-import me.dmdev.rxpm.base.PmSupportActivity
+import com.arellomobile.mvp.MvpAppCompatActivity
 
-abstract class BaseActivity<PM : BasePresentationModel> : PmSupportActivity<PM>() {
+abstract class BaseActivity<V : BaseContract.View, P : BaseContract.Presenter<V>> :
+    MvpAppCompatActivity(), BaseContract.View {
+
     abstract val activityInfo: ActivityInfo
 
-    override fun onBindPresentationModel(pm: PM) {
-    }
+    lateinit var presenter: P
 
-    @SuppressLint("MissingSuperCall")
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(activityInfo.layoutId)
