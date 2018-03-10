@@ -7,5 +7,7 @@ interface LoginContract {
         fun openWebView(loginUrl: String)
     }
 
-    interface Presenter : BaseContract.Presenter<View>
+    interface Presenter : BaseContract.Presenter<View> {
+        fun login(login: String, password: String)
+    }
 }
