@@ -14,5 +14,9 @@
     <string name="skip">Skip</string>
     <string name="like_coin">Like(+1 coin)</string>
 
+    <string name="login">Login</string>
+    <string name="password">Password</string>
+    <string name="log_in">Log In</string>
+
 
 </resources>

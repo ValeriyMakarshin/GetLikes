@@ -16,6 +16,6 @@ class LoginPresenter : BasePresenter<LoginContract.View>(), LoginContract.Presen
 
     override fun attach(view: LoginContract.View, bundle: Bundle?) {
         super.attach(view, bundle)
-        view.openWebView(loginUrl)
+//        view.openWebView(loginUrl)
     }
 }

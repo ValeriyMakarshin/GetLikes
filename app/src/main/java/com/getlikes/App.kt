@@ -11,9 +11,14 @@ import com.github.salomonbrys.kodein.android.autoAndroidModule
 import io.fabric.sdk.android.Fabric
 
 class App : Application(), KodeinAware {
+    companion object {
+        const val TAG_INSTAGRAM = "tag_instagram"
+    }
+
     override val kodein by Kodein.lazy {
         import(autoAndroidModule(this@App))
 
+        bind<InstagramApi>(TAG_INSTAGRAM) with instance(Network.getInsagramApi())
         bind<StartContract.Presenter>() with instance(StartPresenter())
         bind<LoginContract.Presenter>() with instance(LoginPresenter())
     }
