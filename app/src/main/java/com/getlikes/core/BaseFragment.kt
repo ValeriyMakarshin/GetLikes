@@ -17,4 +17,16 @@ abstract class BaseFragment<V : BaseContract.View, P : BaseContract.Presenter<V>
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? =
         inflater.inflate(activityInfo.layoutId, container, false)
+
+
+    override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
+        super.onViewCreated(view, savedInstanceState)
+
+        viewInit()
+
+        presenter.attach(this as V, arguments)
+    }
+
+    protected open fun viewInit() {
+    }
 }
