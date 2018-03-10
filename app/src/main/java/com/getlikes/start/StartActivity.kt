@@ -1,5 +1,6 @@
 package com.getlikes.start
 
+import com.getlikes.Navigator
 import com.getlikes.R
 import com.getlikes.core.ActivityInfo
 import com.getlikes.core.BaseActivity
@@ -16,7 +17,12 @@ class StartActivity : BaseActivity<StartContract.View, StartContract.Presenter>(
     override fun viewInit() {
         super.viewInit()
 
-        uiGetStartedBt.setOnClickListener { presenter.goToLogin() }
+        uiGetStartedBt.setOnClickListener { presenter.getStart() }
     }
+
+    override fun goToLogin() {
+        Navigator.login(this)
+    }
+
 }
 
