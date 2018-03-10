@@ -31,7 +31,7 @@ abstract class BaseActivity<in V : BaseContract.View, out P : BaseContract.Prese
         viewInit()
     }
 
-    open fun needShowHomeButton(): Boolean = true
+    open fun needShowHomeButton(): Boolean = false
 
     protected open fun viewInit() {
     }
