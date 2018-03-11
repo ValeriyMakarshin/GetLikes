@@ -12,7 +12,6 @@ interface Network {
 
         fun getInsagramApi(): InstagramApi = baseInitRetrofit(BASE_INSTAGRAM_URL)
 
-
         private fun getOkHttpClient(): OkHttpClient {
             return OkHttpClient.Builder()
                 .addNetworkInterceptor(StethoInterceptor())
