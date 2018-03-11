@@ -25,12 +25,6 @@ class App : Application(), KodeinAware {
     }
 
     override val kodein by Kodein.lazy {
-        //        import(autoAndroidModule(this@App))
-
-//            @Provides @Singleton IStorage provideStorage(SharedPreferences sharedPreferences, Moshi moshi) {
-//        return new Storage(sharedPreferences, moshi);
-//    }
-
         bind<Storage>() with singleton {
             StorageImpl(getSharedPreferences(packageName, Context.MODE_PRIVATE), Gson())
         }
@@ -42,7 +36,7 @@ class App : Application(), KodeinAware {
         bind<StartContract.Presenter>() with singleton { StartPresenter() }
 
         bind<LoginInteractor>() with singleton { LoginInteractorImpl(instance(TAG_INSTAGRAM)) }
-        bind<LoginContract.Presenter>() with singleton { LoginPresenter(instance()) }
+        bind<LoginContract.Presenter>() with singleton { LoginPresenter(instance(), instance()) }
     }
 
     override fun onCreate() {

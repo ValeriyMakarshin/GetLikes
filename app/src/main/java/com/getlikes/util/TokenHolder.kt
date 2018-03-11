@@ -8,8 +8,8 @@ class TokenHolder(private val storage: Storage) {
         private val KEY_PASSWORD = "password"
 
         private val KEY_COOKIE = "cookie"
-        private val KEY_USER_ID = "user_id"
-        private val KEY_SESSION_ID = "session_id"
+        val KEY_USER_ID = "user_id"
+        val KEY_SESSION_ID = "session_id"
 
         private val KEY_TOKEN = "token"
         private val KEY_EMAIL = "email"
