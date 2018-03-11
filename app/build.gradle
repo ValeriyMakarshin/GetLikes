@@ -1,19 +1,20 @@
 apply plugin: 'com.android.application'
 apply plugin: 'kotlin-android'
 apply plugin: 'kotlin-android-extensions'
+apply plugin: 'kotlin-kapt'
 apply plugin: 'io.fabric'
 
 def versionMajor = 0
 def versionMinor = 0
 def versionPatch = 0
-def versionBuild = 4
+def versionBuild = 5
 def versionSuffix = versionBuild > 0 ? "-beta" : ""
 
 android {
     compileSdkVersion 27
     defaultConfig {
         applicationId "com.getlikes"
-        minSdkVersion 15
+        minSdkVersion 16
         targetSdkVersion 27
         versionCode versionMajor * 10000 + versionMinor * 1000 + versionPatch * 100 + versionBuild
         versionName "${versionMajor}.${versionMinor}.${versionPatch}.${versionBuild}${versionSuffix}"
@@ -31,17 +32,31 @@ android {
     }
 }
 
+kapt {
+    generateStubs = true
+}
+
+apply from: 'deps.gradle'
+
 dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
-    implementation "org.jetbrains.kotlin:kotlin-stdlib-jre7:$kotlin_version"
-    implementation 'com.android.support:appcompat-v7:27.1.0'
-    implementation 'com.android.support.constraint:constraint-layout:1.0.2'
+    implementation supportLibs
+    implementation kotlinLibs
+    implementation rxJavaLibs
+    implementation retrofitLibs
+    implementation okHttpLibs
+    implementation stethoLibs
+    implementation kodeinLibs
+//    implementation moxyLibs
+
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
         transitive = true
     }
 
-    testImplementation 'junit:junit:4.12'
+    kapt 'com.arello-mobile:moxy-compiler:1.5.3'
 
-    androidTestImplementation 'com.android.support.test:runner:1.0.1'
-    androidTestImplementation 'com.android.support.test.espresso:espresso-core:3.0.1'
+
+    testImplementation kotlinTestLibs
+
+    androidTestImplementation androidTestsLibs
 }

@@ -14,13 +14,19 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme"
         >
-        <activity android:name=".MainActivity">
+
+        <activity android:name=".start.StartActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
+
+        <activity android:name=".login.LoginActivity" />
+
+        <activity android:name=".main.MainActivity" />
+
         <meta-data
             android:name="io.fabric.ApiKey"
             android:value="e87922e29d5e4ee4905efb222b78eb1f0387c555"
