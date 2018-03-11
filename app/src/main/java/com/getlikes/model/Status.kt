@@ -3,7 +3,7 @@ package com.getlikes.model
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName
 
-data class Authenticity(
+data class Status(
     @SerializedName("authenticated") @Expose
     var authenticated: Boolean? = null,
 

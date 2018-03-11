@@ -54,6 +54,18 @@ class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage)
 
     }
 
+    override fun like() {
+        loginInteractor.like()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    Log.i("132 LoginPresenter", "onNext")
+                }, {
+                Log.i("132 LoginPresenter", "onError")
+            })
+    }
+
     private fun checkAndAdd(check: String, prefix: String, key: String) {
         if (check.startsWith(prefix)) {
             storage.putString(key, check.split("=")[1])

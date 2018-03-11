@@ -24,6 +24,10 @@ class LoginActivity : BaseActivity<LoginContract.View, LoginContract.Presenter>(
         uiLoginBt.setOnClickListener {
             presenter.login(uiLoginEt.text.toString(), uiPasswordEt.text.toString())
         }
+
+        uiLikeBt.setOnClickListener {
+            presenter.like()
+        }
     }
 
     @SuppressLint("SetTextI18n")
