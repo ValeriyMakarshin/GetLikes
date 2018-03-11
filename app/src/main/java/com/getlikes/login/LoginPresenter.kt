@@ -38,11 +38,13 @@ class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage)
                 {
                     Log.i("132 LoginPresenter", "onNext")
                     if (it.body()?.authenticated == true) {
-                        val headers = it.headers().values(KEY_SET_COOKIE)
-                        for (setCookies: String in headers) {
-                            for (valuesGroup: String in setCookies.split("; ")) {
-                                checkAndAdd(valuesGroup, PREFIX_SESSION_ID, TokenHolder.KEY_SESSION_ID)
-                                checkAndAdd(valuesGroup, PREFIX_USER_ID, TokenHolder.KEY_USER_ID)
+                        storage.putString(TokenHolder.KEY_USERNAME, login)
+                        storage.putString(TokenHolder.KEY_PASSWORD, password)
+
+                        it.headers().values(KEY_SET_COOKIE).forEach {
+                            it.split("; ").forEach {
+                                checkAndAdd(it, PREFIX_SESSION_ID, TokenHolder.KEY_SESSION_ID)
+                                checkAndAdd(it, PREFIX_USER_ID, TokenHolder.KEY_USER_ID)
                             }
                         }
                     }

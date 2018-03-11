@@ -4,10 +4,10 @@ import com.getlikes.util.storage.Storage
 
 class TokenHolder(private val storage: Storage) {
     companion object {
-        private val KEY_USERNAME = "username"
-        private val KEY_PASSWORD = "password"
+        val KEY_USERNAME = "username"
+        val KEY_PASSWORD = "password"
 
-        private val KEY_COOKIE = "cookie"
+        val KEY_COOKIE = "cookie"
         val KEY_USER_ID = "user_id"
         val KEY_SESSION_ID = "session_id"
 
