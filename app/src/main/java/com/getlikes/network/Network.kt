@@ -1,6 +1,9 @@
 package com.getlikes.network
 
+import android.icu.util.ULocale.getLanguage
 import com.facebook.stetho.okhttp3.StethoInterceptor
+import com.getlikes.util.Strings
+import com.getlikes.util.TokenHolder
 import okhttp3.OkHttpClient
 import retrofit2.Retrofit
 import retrofit2.adapter.rxjava2.RxJava2CallAdapterFactory
@@ -12,8 +15,25 @@ object Network {
     fun getInsagramApi(): InstagramApi = baseInitRetrofit(BASE_INSTAGRAM_URL)
 
 
-    private fun getOkHttpClient(): OkHttpClient {
+    private fun getOkHttpClient(tokenHolder: TokenHolder): OkHttpClient {
         return OkHttpClient.Builder()
+            .addInterceptor { chain ->
+                val token = tokenHolder.token
+                val email = tokenHolder.email
+                var request = chain.request()
+
+
+                if (!Strings.isEmpty(token) &&
+                    !Strings.isEmpty(email)) {
+                    request = request.newBuilder()
+                        .addHeader("cookie", token!!)
+                        .addHeader("referer", "https://www.instagram.com/")
+                        .build();
+                }
+
+
+                chain.proceed(request)
+            }
 
 //                .addInterceptor(chain -> {
 //                String token = tokenHolder . getToken ();
