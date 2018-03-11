@@ -14,6 +14,8 @@ class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage)
         const val CLIENT_ID = "b42369aada9d4b9cbaf56c12963d01b3"
         const val REDIRECT_URL = "http://localhost"
 
+        const val KEY_SET_COOKIE = "set-cookie"
+
         const val PREFIX_SESSION_ID = "sessionid="
         const val PREFIX_USER_ID = "ds_user_id="
     }
@@ -34,15 +36,16 @@ class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage)
             .observeOn(AndroidSchedulers.mainThread())
             .subscribe(
                 {
-                    val headers = it.headers().values("set-cookie")
-//                    headers.forEach { it.split("; ").forEach {  } }
-                    for (setCookies: String in headers) {
-                        for (valuesGroup: String in setCookies.split("; ")) {
-                            checkAndAdd(valuesGroup, PREFIX_SESSION_ID, TokenHolder.KEY_SESSION_ID)
-                            checkAndAdd(valuesGroup, PREFIX_USER_ID, TokenHolder.KEY_USER_ID)
+                    Log.i("132 LoginPresenter", "onNext")
+                    if (it.body()?.authenticated == true) {
+                        val headers = it.headers().values(KEY_SET_COOKIE)
+                        for (setCookies: String in headers) {
+                            for (valuesGroup: String in setCookies.split("; ")) {
+                                checkAndAdd(valuesGroup, PREFIX_SESSION_ID, TokenHolder.KEY_SESSION_ID)
+                                checkAndAdd(valuesGroup, PREFIX_USER_ID, TokenHolder.KEY_USER_ID)
+                            }
                         }
                     }
-                    Log.i("132 LoginPresenter", "onNext")
                 }, {
                 Log.i("132 LoginPresenter", "onError")
             })

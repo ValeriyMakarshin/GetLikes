@@ -1,5 +1,6 @@
 package com.getlikes.network
 
+import com.getlikes.model.Authenticity
 import io.reactivex.Observable
 import retrofit2.Response
 import retrofit2.http.Field
@@ -13,6 +14,5 @@ interface InstagramApi {
     fun login(@Field("username") username: String,
               @Field("password") password: String,
               @Field("next") next: String = "/"
-    ): Observable<Response<Map<String, String>>>
-
+    ): Observable<Response<Authenticity>>
 }
