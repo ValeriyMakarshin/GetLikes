@@ -1,6 +1,9 @@
 package com.getlikes.util
 
 import org.jetbrains.annotations.Contract
+import java.security.NoSuchAlgorithmException
+import java.util.*
+
 
 class Strings {
     companion object {
@@ -17,16 +20,28 @@ class Strings {
             return str == null || str.isEmpty()
         }
 
-        fun isCorrectEmail(email: String): Boolean {
-            return email.matches(EMAIL_REGEX.toRegex())
+        fun generateToken(): String {
+            val now = Date()
+            val random = Random()
+            return md5(now.toString() + random.nextInt())
         }
 
-        fun isCorrectPhone(phone: String): Boolean {
-            return phone.matches(PHONE_REGEX.toRegex())
-        }
+        private fun md5(s: String): String {
+            try {
+                val digest = java.security.MessageDigest.getInstance("MD5")
+                digest.update(s.toByteArray())
+                val messageDigest = digest.digest()
 
-        fun isCorrectPassword(password: String): Boolean {
-            return password.length >= 8
+                val hexString = StringBuffer()
+                for (i in messageDigest.indices)
+                    hexString.append(Integer.toHexString(0xFF and messageDigest[i].toInt()))
+                return hexString.toString()
+
+            } catch (e: NoSuchAlgorithmException) {
+                e.printStackTrace()
+            }
+
+            return ""
         }
 
     }
