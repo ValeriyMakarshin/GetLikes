@@ -13,7 +13,6 @@ import kotlinx.android.synthetic.main.activity_login.*
 class LoginActivity : BaseActivity<LoginContract.View, LoginContract.Presenter>(),
     LoginContract.View {
 
-    //    override val presenter: LoginContract.Presenter by instance()
     override val presenter: LoginContract.Presenter by instance()
 
     override val activityInfo: ActivityInfo
@@ -21,21 +20,11 @@ class LoginActivity : BaseActivity<LoginContract.View, LoginContract.Presenter>(
 
     override fun viewInit() {
         super.viewInit()
-//        uiLoginWv.webViewClient = object : WebViewClient() {
-//            override fun shouldOverrideUrlLoading(view: WebView?, request: WebResourceRequest?): Boolean {
-//                return super.shouldOverrideUrlLoading(view, request)
-//            }
-//        }
 
         uiLoginBt.setOnClickListener {
             presenter.login(uiLoginEt.text.toString(), uiPasswordEt.text.toString())
         }
     }
-
-    override fun openWebView(loginUrl: String) {
-//        uiLoginWv.loadUrl(loginUrl)
-    }
-
 
     @SuppressLint("SetTextI18n")
     override fun onKeyDown(keyCode: Int, event: KeyEvent): Boolean {
