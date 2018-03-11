@@ -1,6 +1,6 @@
 package com.getlikes.login
 
-import com.getlikes.InstagramApi
+import com.getlikes.network.InstagramApi
 import io.reactivex.Observable
 
 class LoginInteractorImpl(private val instagramApi: InstagramApi) : LoginInteractor {

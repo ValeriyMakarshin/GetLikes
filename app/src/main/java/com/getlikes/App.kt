@@ -7,6 +7,8 @@ import com.getlikes.login.LoginContract
 import com.getlikes.login.LoginInteractor
 import com.getlikes.login.LoginInteractorImpl
 import com.getlikes.login.LoginPresenter
+import com.getlikes.network.InstagramApi
+import com.getlikes.network.Network
 import com.getlikes.start.StartContract
 import com.getlikes.start.StartPresenter
 import com.github.salomonbrys.kodein.*

@@ -14,7 +14,6 @@ class LoginPresenter(val loginInteractor: LoginInteractor) :
         const val REDIRECT_URL = "http://localhost"
     }
 
-
     val loginUrl: String = "https://www.instagram.com/oauth/authorize/?" +
         "client_id=$CLIENT_ID&" +
         "redirect_uri=$REDIRECT_URL&" +
