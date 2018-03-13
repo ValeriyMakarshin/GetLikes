@@ -8,11 +8,9 @@ import java.io.IOException
 import java.lang.reflect.Type
 
 class StorageImpl(private val sp: SharedPreferences, private val gson: Gson) : Storage {
-    override fun <T> get(key: String, clazz: Type): T? {
+    override fun <T> getObject(key: String, clazz: Type): T? {
         val json = sp.getString(key, Strings.EMPTY)
-        if (Strings.isEmpty(json))
-            return null
-        else {
+        if (!Strings.isEmpty(json)) {
             try {
                 return gson.fromJson(json, Type::class.java) as T
             } catch (e: IOException) {

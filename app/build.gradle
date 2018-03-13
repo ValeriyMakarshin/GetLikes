@@ -7,7 +7,7 @@ apply plugin: 'io.fabric'
 def versionMajor = 0
 def versionMinor = 0
 def versionPatch = 0
-def versionBuild = 5
+def versionBuild = 6
 def versionSuffix = versionBuild > 0 ? "-beta" : ""
 
 android {
@@ -26,7 +26,11 @@ android {
 
     buildTypes {
         release {
-            minifyEnabled false
+            minifyEnabled true
+            proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
+        }
+        debug {
+            minifyEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }

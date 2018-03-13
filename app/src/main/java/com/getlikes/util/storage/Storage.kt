@@ -5,7 +5,7 @@ import java.lang.reflect.Type
 
 interface Storage {
 
-    operator fun <T> get(key: String, clazz: Type): T?
+    fun <T> getObject(key: String, clazz: Type): T?
 
     fun putUser(key: String, user: User)
 

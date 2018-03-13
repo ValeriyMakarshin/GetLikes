@@ -9,6 +9,7 @@ class Strings {
     companion object {
         val EMPTY = ""
         val EMPTY_TEXT = "-"
+        val MOD_VALUE = 0xFF
 
         private val EMAIL_REGEX = "^[_A-Za-z0-9-\\+]+" +
             "(\\.[_A-Za-z0-9-]+)*@[A-Za-z0-9-]+(\\.[A-Za-z0-9]+)*(\\.[A-Za-z]{2,})$"
@@ -34,7 +35,7 @@ class Strings {
 
                 val hexString = StringBuffer()
                 for (i in messageDigest.indices)
-                    hexString.append(Integer.toHexString(0xFF and messageDigest[i].toInt()))
+                    hexString.append(Integer.toHexString(MOD_VALUE and messageDigest[i].toInt()))
                 return hexString.toString()
 
             } catch (e: NoSuchAlgorithmException) {
