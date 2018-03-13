@@ -4,16 +4,17 @@ import com.getlikes.util.storage.Storage
 
 class TokenHolder(private val storage: Storage) {
     companion object {
-        val KEY_USERNAME = "username"
-        val KEY_PASSWORD = "password"
+        val KEY_LOGIN = "key_login"
+        val KEY_PASSWORD = "key_password"
+        val KEY_USERNAME = "key_username"
 
-        val KEY_COOKIE = "cookie"
-        val KEY_USER_ID = "user_id"
-        val KEY_SESSION_ID = "session_id"
+        val KEY_COOKIE = "key_cookie"
+        val KEY_USER_ID = "key_user_id"
+        val KEY_SESSION_ID = "key_session_id"
 
-        private val KEY_TOKEN = "token"
-        private val KEY_EMAIL = "email"
-        private val KEY_ID = "id"
+        private val KEY_TOKEN = "key_token"
+        private val KEY_EMAIL = "key_email"
+        private val KEY_ID = "key_id"
     }
 
     val token: String

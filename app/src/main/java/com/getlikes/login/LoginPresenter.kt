@@ -27,7 +27,7 @@ class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage)
                 {
                     Log.i("132 LoginPresenter", "onNext")
                     if (it.body()?.authenticated == true) {
-                        storage.putString(TokenHolder.KEY_USERNAME, login)
+                        storage.putString(TokenHolder.KEY_LOGIN, login)
                         storage.putString(TokenHolder.KEY_PASSWORD, password)
 
                         it.headers().values(KEY_SET_COOKIE).forEach {
@@ -36,6 +36,24 @@ class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage)
                                 checkAndAdd(it, PREFIX_USER_ID, TokenHolder.KEY_USER_ID)
                             }
                         }
+
+                        getUserName()
+                    }
+                }, {
+                Log.i("132 LoginPresenter", "onError")
+            })
+
+    }
+
+    fun getUserName() {
+        loginInteractor.getUserData()
+            .subscribeOn(Schedulers.io())
+            .observeOn(AndroidSchedulers.mainThread())
+            .subscribe(
+                {
+                    Log.i("132 LoginPresenter", "onNext")
+                    it.formData?.username?.let { username ->
+                        storage.putString(TokenHolder.KEY_USERNAME, username)
                     }
                 }, {
                 Log.i("132 LoginPresenter", "onError")
