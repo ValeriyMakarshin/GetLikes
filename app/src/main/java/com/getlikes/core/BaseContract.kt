@@ -3,7 +3,13 @@ package com.getlikes.core
 import android.os.Bundle
 
 interface BaseContract {
-    interface View
+    interface View {
+        fun showError(throwable: Throwable)
+
+        fun showProgress()
+
+        fun hideProgress()
+    }
 
     interface Presenter<in V : View> {
         fun attach(view: V, bundle: Bundle? = null)

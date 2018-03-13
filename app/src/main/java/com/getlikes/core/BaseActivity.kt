@@ -42,4 +42,12 @@ abstract class BaseActivity<in V : BaseContract.View, out P : BaseContract.Prese
         super.onDestroy()
     }
 
+    override fun showError(throwable: Throwable) {
+    }
+
+    override fun showProgress() {
+    }
+
+    override fun hideProgress() {
+    }
 }
