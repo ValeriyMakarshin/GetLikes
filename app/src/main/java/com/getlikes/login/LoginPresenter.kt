@@ -1,6 +1,5 @@
 package com.getlikes.login
 
-import android.os.Bundle
 import android.util.Log
 import com.getlikes.core.BasePresenter
 import com.getlikes.util.TokenHolder
@@ -18,16 +17,6 @@ class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage)
 
         const val PREFIX_SESSION_ID = "sessionid="
         const val PREFIX_USER_ID = "ds_user_id="
-    }
-
-    val loginUrl: String = "https://www.instagram.com/oauth/authorize/?" +
-        "client_id=$CLIENT_ID&" +
-        "redirect_uri=$REDIRECT_URL&" +
-        "response_type=code"
-
-    override fun attach(view: LoginContract.View, bundle: Bundle?) {
-        super.attach(view, bundle)
-//        view.openWebView(loginUrl)
     }
 
     override fun login(login: String, password: String) {
