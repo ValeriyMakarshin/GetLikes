@@ -15,7 +15,10 @@
         android:theme="@style/AppTheme"
         >
 
-        <activity android:name=".start.StartActivity">
+        <activity
+            android:name=".start.StartActivity"
+            android:screenOrientation="portrait"
+            >
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 
@@ -23,9 +26,15 @@
             </intent-filter>
         </activity>
 
-        <activity android:name=".login.LoginActivity" />
+        <activity
+            android:name=".login.LoginActivity"
+            android:screenOrientation="portrait"
+            />
 
-        <activity android:name=".main.MainActivity" />
+        <activity
+            android:name=".main.MainActivity"
+            android:screenOrientation="portrait"
+            />
 
         <meta-data
             android:name="io.fabric.ApiKey"
