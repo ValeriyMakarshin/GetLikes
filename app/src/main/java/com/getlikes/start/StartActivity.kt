@@ -1,5 +1,6 @@
 package com.getlikes.start
 
+import com.getlikes.App
 import com.getlikes.Navigator
 import com.getlikes.R
 import com.getlikes.core.ActivityInfo

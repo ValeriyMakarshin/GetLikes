@@ -1,15 +1,18 @@
 package com.getlikes.model
 
-import com.google.gson.annotations.Expose
-import com.google.gson.annotations.SerializedName
+enum class Status(val value: String) {
+    OK("ok"),
+    FAIL("fail");
 
-data class Status(
-    @SerializedName("authenticated") @Expose
-    var authenticated: Boolean? = null,
+    companion object {
+        fun parseStatus(value: String): Status? {
+            Status.values().forEach {
+                if (it.value == value)
+                    return it
+            }
+            return null
+        }
+    }
+}
 
-    @SerializedName("user") @Expose
-    var user: Boolean? = null,
 
-    @SerializedName("status") @Expose
-    var status: String? = null
-)

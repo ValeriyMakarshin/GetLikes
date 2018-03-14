@@ -1,7 +1,6 @@
 package com.getlikes.util.storage
 
 import android.content.SharedPreferences
-import com.getlikes.model.User
 import com.getlikes.util.Strings
 import com.google.gson.Gson
 import java.io.IOException
@@ -20,8 +19,8 @@ class StorageImpl(private val sp: SharedPreferences, private val gson: Gson) : S
         return null
     }
 
-    override fun putUser(key: String, user: User) {
-        sp.edit().putString(key, gson.toJson(user)).apply()
+    override fun putObject(key: String, any: Any) {
+        sp.edit().putString(key, gson.toJson(any)).apply()
     }
 
     override fun putString(key: String, str: String) {

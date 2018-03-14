@@ -5,6 +5,7 @@ import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
 
 abstract class BaseFragment<in V : BaseContract.View, P : BaseContract.Presenter<V>> :
     Fragment(), BaseContract.View {
@@ -35,6 +36,7 @@ abstract class BaseFragment<in V : BaseContract.View, P : BaseContract.Presenter
     }
 
     override fun showError(throwable: Throwable) {
+        Toast.makeText(context, throwable.message, Toast.LENGTH_LONG).show()
     }
 
     override fun showProgress() {
