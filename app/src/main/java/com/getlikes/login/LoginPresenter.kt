@@ -8,12 +8,6 @@ import com.getlikes.util.storage.Storage
 
 class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage) :
     BasePresenter<LoginContract.View>(), LoginContract.Presenter {
-    companion object {
-        const val KEY_SET_COOKIE = "set-cookie"
-
-        const val PREFIX_SESSION_ID = "sessionid="
-        const val PREFIX_USER_ID = "ds_user_id="
-    }
 
     override fun login(login: String, password: String) {
         baseObservable(loginInteractor.login(login, password),
@@ -37,11 +31,5 @@ class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage)
             }, {
             Log.i("132 LoginPresenter", "onError")
         })
-    }
-
-    private fun checkAndAdd(check: String, prefix: String, key: String) {
-        if (check.startsWith(prefix)) {
-            storage.putString(key, check.split("=")[1])
-        }
     }
 }
