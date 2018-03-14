@@ -7,7 +7,7 @@ import android.view.View
 import android.view.ViewGroup
 
 abstract class BaseFragment<in V : BaseContract.View, P : BaseContract.Presenter<V>> :
-    Fragment() {
+    Fragment(), BaseContract.View {
 
     abstract val activityInfo: ActivityInfo
 
@@ -32,5 +32,14 @@ abstract class BaseFragment<in V : BaseContract.View, P : BaseContract.Presenter
     override fun onDestroyView() {
         presenter.detach()
         super.onDestroyView()
+    }
+
+    override fun showError(throwable: Throwable) {
+    }
+
+    override fun showProgress() {
+    }
+
+    override fun hideProgress() {
     }
 }

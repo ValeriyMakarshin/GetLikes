@@ -7,5 +7,7 @@ interface LoginContract {
 
     interface Presenter : BaseContract.Presenter<View> {
         fun login(login: String, password: String)
+
+        fun like()
     }
 }
