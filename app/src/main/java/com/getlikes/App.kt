@@ -9,6 +9,14 @@ import com.getlikes.login.LoginContract
 import com.getlikes.login.LoginInteractor
 import com.getlikes.login.LoginInteractorImpl
 import com.getlikes.login.LoginPresenter
+import com.getlikes.main.choice.ChoiceContract
+import com.getlikes.main.choice.ChoiceInteractor
+import com.getlikes.main.choice.ChoiceInteractorImpl
+import com.getlikes.main.choice.ChoicePresenter
+import com.getlikes.main.earncoins.EarnCoinsContract
+import com.getlikes.main.earncoins.EarnCoinsPresenter
+import com.getlikes.main.hashtags.HashTagsContract
+import com.getlikes.main.hashtags.HashTagsPresenter
 import com.getlikes.network.InstagramApi
 import com.getlikes.network.Network
 import com.getlikes.start.StartContract
@@ -47,6 +55,13 @@ class App : Application(), KodeinAware {
 
         bind<LoginInteractor>() with singleton { LoginInteractorImpl(instance()) }
         bind<LoginContract.Presenter>() with singleton { LoginPresenter(instance(), instance()) }
+
+        bind<ChoiceInteractor>() with singleton { ChoiceInteractorImpl(instance()) }
+        bind<ChoiceContract.Presenter>() with singleton { ChoicePresenter(instance()) }
+
+        bind<EarnCoinsContract.Presenter>() with singleton { EarnCoinsPresenter() }
+
+        bind<HashTagsContract.Presenter>() with singleton { HashTagsPresenter() }
     }
 
     override fun onCreate() {
@@ -62,6 +77,5 @@ class App : Application(), KodeinAware {
                 .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
                 .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                 .build())
-
     }
 }

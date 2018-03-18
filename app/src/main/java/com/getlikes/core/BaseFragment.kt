@@ -1,18 +1,18 @@
 package com.getlikes.core
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import android.widget.Toast
+import com.github.salomonbrys.kodein.android.KodeinSupportFragment
 
 abstract class BaseFragment<in V : BaseContract.View, P : BaseContract.Presenter<V>> :
-    Fragment(), BaseContract.View {
+    KodeinSupportFragment(), BaseContract.View {
 
     abstract val activityInfo: ActivityInfo
 
-    lateinit var presenter: P
+    abstract val presenter: P
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? =

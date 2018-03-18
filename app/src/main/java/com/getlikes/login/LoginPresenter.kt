@@ -1,6 +1,5 @@
 package com.getlikes.login
 
-import android.util.Log
 import com.getlikes.core.BasePresenter
 import com.getlikes.model.Status
 import com.getlikes.util.TokenHolder
@@ -12,7 +11,6 @@ class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage)
     override fun login(login: String, password: String) {
         baseObservable(loginInteractor.login(login, password),
             {
-                Log.i("132 LoginPresenter", "onNext")
                 if (Status.parseStatus(it.status) == Status.OK) {
                     storage.putString(TokenHolder.KEY_LOGIN, login)
                     storage.putString(TokenHolder.KEY_PASSWORD, password)
