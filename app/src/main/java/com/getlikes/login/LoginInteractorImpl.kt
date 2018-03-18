@@ -1,7 +1,5 @@
 package com.getlikes.login
 
-import com.getlikes.model.Status
-import com.getlikes.model.edit.EditModel
 import dev.niekirk.com.instagram4android.Instagram4Android
 import dev.niekirk.com.instagram4android.requests.payload.InstagramLoginResult
 import io.reactivex.Observable
@@ -18,11 +16,4 @@ class LoginInteractorImpl(private val instagram4Android: Instagram4Android) : Lo
         }
     }
 
-    override fun like(): Observable<Status> {
-        return Observable.empty()
-    }
-
-    override fun getUserData(): Observable<EditModel> {
-        return Observable.empty()
-    }
 }

@@ -23,13 +23,4 @@ class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage)
             })
     }
 
-
-    override fun like() {
-        baseObservable(loginInteractor.like(),
-            {
-                Log.i("132 LoginPresenter", "onNext")
-            }, {
-            Log.i("132 LoginPresenter", "onError")
-        })
-    }
 }
