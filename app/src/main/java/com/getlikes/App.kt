@@ -9,6 +9,8 @@ import com.getlikes.login.LoginContract
 import com.getlikes.login.LoginInteractor
 import com.getlikes.login.LoginInteractorImpl
 import com.getlikes.login.LoginPresenter
+import com.getlikes.main.MainContract
+import com.getlikes.main.MainPresenter
 import com.getlikes.main.choice.ChoiceContract
 import com.getlikes.main.choice.ChoiceInteractor
 import com.getlikes.main.choice.ChoiceInteractorImpl
@@ -55,6 +57,8 @@ class App : Application(), KodeinAware {
 
         bind<LoginInteractor>() with singleton { LoginInteractorImpl(instance()) }
         bind<LoginContract.Presenter>() with singleton { LoginPresenter(instance(), instance()) }
+
+        bind<MainContract.Presenter>() with singleton { MainPresenter() }
 
         bind<ChoiceInteractor>() with singleton { ChoiceInteractorImpl(instance()) }
         bind<ChoiceContract.Presenter>() with singleton { ChoicePresenter(instance()) }

@@ -38,6 +38,6 @@ class LoginActivity : BaseActivity<LoginContract.View, LoginContract.Presenter>(
     }
 
     override fun goToMain() {
-        Navigator.login(this)
+        Navigator.mainScreen(this)
     }
 }
