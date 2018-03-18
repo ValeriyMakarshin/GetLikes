@@ -1,6 +1,5 @@
 package com.getlikes.main.choice
 
-import android.util.Log
 import com.getlikes.core.BasePresenter
 
 class ChoicePresenter(private val interactor: ChoiceInteractor) :
@@ -9,8 +8,7 @@ class ChoicePresenter(private val interactor: ChoiceInteractor) :
     override fun loadData() {
         baseObservable(interactor.getPhoto(),
             {
-                Log.i("132", "loadList")
-                it.items
+                view?.showList(it.items)
             })
     }
 }

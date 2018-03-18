@@ -9,7 +9,8 @@ class ChoiceInteractorImpl(private val instagram4Android: Instagram4Android) : C
 
     override fun getPhoto(): Observable<InstagramFeedResult> {
         return Observable.create<InstagramFeedResult> {
-            val request: InstagramFeedResult = instagram4Android.sendRequest(InstagramUserFeedRequest())
+            val request: InstagramFeedResult = instagram4Android.sendRequest(
+                InstagramUserFeedRequest(instagram4Android.userId, "", 0))
             it.onNext(request)
             it.onComplete()
         }
