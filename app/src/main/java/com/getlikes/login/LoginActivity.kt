@@ -3,6 +3,7 @@ package com.getlikes.login
 import android.annotation.SuppressLint
 import android.view.KeyEvent
 import com.getlikes.BuildConfig
+import com.getlikes.Navigator
 import com.getlikes.R
 import com.getlikes.core.ActivityInfo
 import com.getlikes.core.BaseActivity
@@ -36,4 +37,7 @@ class LoginActivity : BaseActivity<LoginContract.View, LoginContract.Presenter>(
         return super.onKeyDown(keyCode, event)
     }
 
+    override fun goToMain() {
+        Navigator.login(this)
+    }
 }

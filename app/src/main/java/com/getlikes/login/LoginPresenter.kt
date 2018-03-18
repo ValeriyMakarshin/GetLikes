@@ -5,7 +5,7 @@ import com.getlikes.model.Status
 import com.getlikes.util.TokenHolder
 import com.getlikes.util.storage.Storage
 
-class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage) :
+class LoginPresenter(private val loginInteractor: LoginInteractor, private val storage: Storage) :
     BasePresenter<LoginContract.View>(), LoginContract.Presenter {
 
     override fun login(login: String, password: String) {
@@ -15,6 +15,8 @@ class LoginPresenter(val loginInteractor: LoginInteractor, val storage: Storage)
                     storage.putString(TokenHolder.KEY_LOGIN, login)
                     storage.putString(TokenHolder.KEY_PASSWORD, password)
                     storage.putObject(TokenHolder.KEY_LOGGED_USER, it.logged_in_user)
+
+                    view?.goToMain()
                 } else {
                     view?.showError(Throwable("Test"))
                 }

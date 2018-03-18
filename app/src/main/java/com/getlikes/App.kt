@@ -68,9 +68,9 @@ class App : Application(), KodeinAware {
         super.onCreate()
         Fabric.with(this, Crashlytics())
 
-        var instagram4Android: Instagram4Android = kodein.instance()
+        val instagram4Android: Instagram4Android = kodein.instance()
 
-        instagram4Android?.client?.networkInterceptors()?.add(StethoInterceptor())
+        instagram4Android.client?.networkInterceptors()?.add(StethoInterceptor())
 
         Stetho.initialize(
             Stetho.newInitializerBuilder(this)
