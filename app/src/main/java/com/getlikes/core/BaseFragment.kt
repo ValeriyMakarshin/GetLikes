@@ -7,7 +7,7 @@ import android.view.ViewGroup
 import android.widget.Toast
 import com.github.salomonbrys.kodein.android.KodeinSupportFragment
 
-abstract class BaseFragment<in V : BaseContract.View, P : BaseContract.Presenter<V>> :
+abstract class BaseFragment<in V : BaseContract.View, out P : BaseContract.Presenter<V>> :
     KodeinSupportFragment(), BaseContract.View {
 
     abstract val activityInfo: ActivityInfo
@@ -19,6 +19,7 @@ abstract class BaseFragment<in V : BaseContract.View, P : BaseContract.Presenter
         inflater.inflate(activityInfo.layoutId, container, false)
 
 
+    @Suppress("UNCHECKED_CAST")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
