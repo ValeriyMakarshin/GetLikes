@@ -4,16 +4,16 @@ import com.getlikes.util.storage.Storage
 
 class TokenHolder(private val storage: Storage) {
     companion object {
-        val KEY_LOGIN = "key_login"
-        val KEY_PASSWORD = "key_password"
+        const val KEY_LOGIN = "key_login"
+        const val KEY_PASSWORD = "key_password"
 
-        val KEY_LOGGED_USER = "key_logged_user"
+        const val KEY_LOGGED_USER = "key_logged_user"
 
         val KEY_USER_ID = "key_user_id"
 
-        private val KEY_TOKEN = "key_token"
-        private val KEY_EMAIL = "key_email"
-        private val KEY_ID = "key_id"
+        private const val KEY_TOKEN = "key_token"
+        private const val KEY_EMAIL = "key_email"
+        private const val KEY_ID = "key_id"
     }
 
     val email: String?
@@ -22,7 +22,7 @@ class TokenHolder(private val storage: Storage) {
     val id: String?
         get() = storage.getString(KEY_ID)
 
-    fun saveSession(token: String, email: String, id: String, notification: String) {
+    fun saveSession(token: String, email: String, id: String) {
         clean()
 
         storage.putString(KEY_TOKEN, token)

@@ -21,6 +21,8 @@ import com.getlikes.main.hashtags.HashTagsContract
 import com.getlikes.main.hashtags.HashTagsPresenter
 import com.getlikes.network.InstagramApi
 import com.getlikes.network.Network
+import com.getlikes.splash.SplashContract
+import com.getlikes.splash.SplashPresenter
 import com.getlikes.start.StartContract
 import com.getlikes.start.StartPresenter
 import com.getlikes.util.Strings
@@ -52,6 +54,8 @@ class App : Application(), KodeinAware {
                 .password(Strings.EMPTY)
                 .build()
         }
+
+        bind<SplashContract.Presenter>() with singleton { SplashPresenter() }
 
         bind<StartContract.Presenter>() with singleton { StartPresenter() }
 

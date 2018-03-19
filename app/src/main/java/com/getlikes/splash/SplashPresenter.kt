@@ -1,3 +1,7 @@
 package com.getlikes.splash
 
-class SplashPresenter
+import com.getlikes.core.BasePresenter
+
+class SplashPresenter : BasePresenter<SplashContract.View>(), SplashContract.Presenter {
+
+}

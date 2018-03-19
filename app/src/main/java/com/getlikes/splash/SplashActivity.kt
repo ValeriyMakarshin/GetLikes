@@ -1,14 +1,15 @@
 package com.getlikes.splash
 
+import com.getlikes.R
 import com.getlikes.core.ActivityInfo
 import com.getlikes.core.BaseActivity
+import com.github.salomonbrys.kodein.instance
 
 class SplashActivity : BaseActivity<SplashContract.View, SplashContract.Presenter>(),
     SplashContract.View {
 
-    override val activityInfo: ActivityInfo
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
-    override val presenter: SplashContract.Presenter
-        get() = TODO("not implemented") //To change initializer of created properties use File | Settings | File Templates.
+    override val activityInfo: ActivityInfo = ActivityInfo(R.layout.activity_splash)
+
+    override val presenter: SplashContract.Presenter by instance()
 
 }
