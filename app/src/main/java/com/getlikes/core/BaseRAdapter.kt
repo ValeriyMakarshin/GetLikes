@@ -22,10 +22,9 @@ abstract class BaseRAdapter<T : Any, VH : BaseHolder<T>>(array: Array<T>,
     }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
-        creator?.let { it(parent) }
-            ?: throw NullPointerException("Using null creator")
+        creator?.let { it(parent) } ?: throw NullPointerException("Using null creator")
 
-    fun updateList(array: Array<*>) {
-        items = array as Array<T>
+    fun updateList(array: Array<T>) {
+        items = array
     }
 }

@@ -9,9 +9,8 @@ class ChoiceInteractorImpl(private val instagram4Android: Instagram4Android) : C
 
     override fun getPhoto(): Observable<InstagramFeedResult> {
         return Observable.create<InstagramFeedResult> {
-            // TODO: 581234915 replaced with a instagram4Android.userId
             val request: InstagramFeedResult = instagram4Android.sendRequest(
-                InstagramUserFeedRequest(581234915, "", 0))
+                InstagramUserFeedRequest(instagram4Android.userId, "", 0))
             it.onNext(request)
             it.onComplete()
         }
