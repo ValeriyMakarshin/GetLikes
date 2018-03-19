@@ -22,6 +22,8 @@ import com.getlikes.main.hashtags.HashTagsPresenter
 import com.getlikes.network.InstagramApi
 import com.getlikes.network.Network
 import com.getlikes.splash.SplashContract
+import com.getlikes.splash.SplashInteractor
+import com.getlikes.splash.SplashInteractorImpl
 import com.getlikes.splash.SplashPresenter
 import com.getlikes.start.StartContract
 import com.getlikes.start.StartPresenter
@@ -55,7 +57,9 @@ class App : Application(), KodeinAware {
                 .build()
         }
 
-        bind<SplashContract.Presenter>() with singleton { SplashPresenter() }
+
+        bind<SplashInteractor>() with singleton { SplashInteractorImpl(instance(), instance()) }
+        bind<SplashContract.Presenter>() with singleton { SplashPresenter(instance()) }
 
         bind<StartContract.Presenter>() with singleton { StartPresenter() }
 
