@@ -12,9 +12,9 @@ class SelectPhotoAdapter(array: Array<InstagramFeedItem>) :
     companion object {
         const val ITEM_VIEW_TYPE_HEADER = 1
         const val ITEM_VIEW_TYPE_ITEM = 2
-    }
 
-    fun isHeader(position: Int): Boolean = position == 0
+        fun isHeader(position: Int): Boolean = position == 0
+    }
 
     override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): SelectPhotoBaseHolder =
         when (viewType) {

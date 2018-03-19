@@ -22,7 +22,16 @@ class ChoiceFragment : BaseFragment<ChoiceContract.View, ChoiceContract.Presente
 
     override fun viewInit() {
         super.viewInit()
-        uiPhotoRv.layoutManager = GridLayoutManager(context, SPAN_COUNT)
+        val manager = GridLayoutManager(context, SPAN_COUNT)
+        manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
+            override fun getSpanSize(position: Int): Int =
+                if (SelectPhotoAdapter.isHeader(position))
+                    manager.spanCount
+                else
+                    1
+        }
+        uiPhotoRv.layoutManager = manager
+
     }
 
     override fun showList(list: List<InstagramFeedItem>) {
