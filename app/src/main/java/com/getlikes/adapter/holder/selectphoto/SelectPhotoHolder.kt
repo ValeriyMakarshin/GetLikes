@@ -1,13 +1,13 @@
-package com.getlikes.adapter.holder
+package com.getlikes.adapter.holder.selectphoto
 
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.getlikes.R
-import com.getlikes.core.BaseHolder
-import com.getlikes.model.Photo
+import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
 
-class SelectPhotoHolder(itemView: View) : BaseHolder<Photo>(itemView) {
+class SelectPhotoHolder(itemView: View) : SelectPhotoBaseHolder(itemView) {
+
     companion object {
         fun creator(): (ViewGroup?) -> SelectPhotoHolder =
             { viewGroup ->
@@ -16,6 +16,7 @@ class SelectPhotoHolder(itemView: View) : BaseHolder<Photo>(itemView) {
             }
     }
 
-    override fun onDraw(item: Photo) {
+    override fun onDraw(item: InstagramFeedItem) {
+
     }
 }

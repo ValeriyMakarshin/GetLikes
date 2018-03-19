@@ -3,6 +3,7 @@ package com.getlikes.core
 import android.annotation.SuppressLint
 import android.os.Bundle
 import android.support.annotation.CallSuper
+import android.widget.Toast
 import com.github.salomonbrys.kodein.android.KodeinAppCompatActivity
 
 abstract class BaseActivity<in V : BaseContract.View, out P : BaseContract.Presenter<V>> :
@@ -43,6 +44,7 @@ abstract class BaseActivity<in V : BaseContract.View, out P : BaseContract.Prese
     }
 
     override fun showError(throwable: Throwable) {
+        Toast.makeText(this, throwable.message, Toast.LENGTH_LONG).show()
     }
 
     override fun showProgress() {

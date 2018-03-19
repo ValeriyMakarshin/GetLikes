@@ -4,7 +4,7 @@ import android.support.v7.widget.RecyclerView
 import android.view.ViewGroup
 
 abstract class BaseRAdapter<T : Any, VH : BaseHolder<T>>(array: Array<T>,
-                                                         val creator: (ViewGroup?) -> VH,
+                                                         val creator: ((ViewGroup?) -> VH)? = null,
                                                          val onClickListener: OnClickListener<T>? =
                                                              null) :
     RecyclerView.Adapter<VH>() {
@@ -21,9 +21,10 @@ abstract class BaseRAdapter<T : Any, VH : BaseHolder<T>>(array: Array<T>,
         holder.setClickListener(onClickListener)
     }
 
-    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH = creator(parent)
+    override fun onCreateViewHolder(parent: ViewGroup, viewType: Int): VH =
+        creator?.let { it(parent) } ?: throw NullPointerException("Using null creator")
 
-    fun updateList(array: Array<*>) {
-        items = array as Array<T>
+    fun updateList(array: Array<T>) {
+        items = array
     }
 }

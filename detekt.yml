@@ -187,7 +187,6 @@ exceptions:
     exceptions:
      - Error
      - Exception
-     - NullPointerException
      - Throwable
      - RuntimeException
 

@@ -15,19 +15,6 @@ object Network {
 
     private fun getOkHttpClient(tokenHolder: TokenHolder): OkHttpClient {
         return OkHttpClient.Builder()
-            .addInterceptor { chain ->
-                val token = tokenHolder.token
-                val cookie = tokenHolder.cookie
-                var request = chain.request()
-
-                request = request.newBuilder()
-                    .addHeader("cookie", cookie)
-                    .addHeader("x-csrftoken", token)
-                    .addHeader("referer", "https://www.instagram.com/")
-                    .build()
-
-                chain.proceed(request)
-            }
             .addNetworkInterceptor(StethoInterceptor())
             .build()
     }

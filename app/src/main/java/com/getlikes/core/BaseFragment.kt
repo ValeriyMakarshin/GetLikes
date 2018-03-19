@@ -1,23 +1,25 @@
 package com.getlikes.core
 
 import android.os.Bundle
-import android.support.v4.app.Fragment
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import android.widget.Toast
+import com.github.salomonbrys.kodein.android.KodeinSupportFragment
 
-abstract class BaseFragment<in V : BaseContract.View, P : BaseContract.Presenter<V>> :
-    Fragment(), BaseContract.View {
+abstract class BaseFragment<in V : BaseContract.View, out P : BaseContract.Presenter<V>> :
+    KodeinSupportFragment(), BaseContract.View {
 
     abstract val activityInfo: ActivityInfo
 
-    lateinit var presenter: P
+    abstract val presenter: P
 
     override fun onCreateView(inflater: LayoutInflater, container: ViewGroup?,
                               savedInstanceState: Bundle?): View? =
         inflater.inflate(activityInfo.layoutId, container, false)
 
 
+    @Suppress("UNCHECKED_CAST")
     override fun onViewCreated(view: View, savedInstanceState: Bundle?) {
         super.onViewCreated(view, savedInstanceState)
 
@@ -35,6 +37,7 @@ abstract class BaseFragment<in V : BaseContract.View, P : BaseContract.Presenter
     }
 
     override fun showError(throwable: Throwable) {
+        Toast.makeText(context, throwable.message, Toast.LENGTH_LONG).show()
     }
 
     override fun showProgress() {

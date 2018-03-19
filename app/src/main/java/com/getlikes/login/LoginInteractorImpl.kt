@@ -1,21 +1,19 @@
 package com.getlikes.login
 
-import com.getlikes.model.Status
-import com.getlikes.model.edit.EditModel
-import com.getlikes.network.InstagramApi
+import dev.niekirk.com.instagram4android.Instagram4Android
+import dev.niekirk.com.instagram4android.requests.payload.InstagramLoginResult
 import io.reactivex.Observable
-import retrofit2.Response
 
-class LoginInteractorImpl(private val instagramApi: InstagramApi) : LoginInteractor {
-    override fun login(login: String, password: String): Observable<Response<Status>> {
-        return instagramApi.login(login, password)
+
+class LoginInteractorImpl(private val instagram4Android: Instagram4Android) : LoginInteractor {
+    override fun login(login: String, password: String): Observable<InstagramLoginResult> {
+        instagram4Android.username = login
+        instagram4Android.password = password
+        return Observable.create<InstagramLoginResult> {
+            instagram4Android.setup()
+            it.onNext(instagram4Android.login())
+            it.onComplete()
+        }
     }
 
-    override fun like(): Observable<Status> {
-        return instagramApi.like()
-    }
-
-    override fun getUserData(): Observable<EditModel> {
-        return instagramApi.userData()
-    }
 }

@@ -27,3 +27,6 @@
 -dontwarn retrofit2.Platform$Java8
 -keepattributes Exceptions
 -keepattributes Signature
+
+-keep class com.github.charlieAndroidDev.**
+-dontwarn com.github.charlieAndroidDev
