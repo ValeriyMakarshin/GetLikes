@@ -48,7 +48,7 @@ class App : Application(), KodeinAware {
 
         bind<TokenHolder>() with singleton { TokenHolder(instance()) }
 
-        bind<InstagramApi>(TAG_INSTAGRAM) with singleton { Network.getInsagramApi(instance()) }
+        bind<InstagramApi>(TAG_INSTAGRAM) with singleton { InstagramApi() }
 
         bind<Instagram4Android>() with singleton {
             Instagram4Android.builder()
@@ -57,6 +57,9 @@ class App : Application(), KodeinAware {
                 .build()
         }
 
+        bind<InstagramApi>() with singleton {
+            InstagramApi()
+        }
 
         bind<SplashInteractor>() with singleton { SplashInteractorImpl(instance(), instance()) }
         bind<SplashContract.Presenter>() with singleton { SplashPresenter(instance()) }

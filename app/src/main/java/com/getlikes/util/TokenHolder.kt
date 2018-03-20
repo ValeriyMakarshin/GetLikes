@@ -1,6 +1,7 @@
 package com.getlikes.util
 
 import com.getlikes.util.storage.Storage
+import dev.niekirk.com.instagram4android.Instagram4Android
 
 class TokenHolder(private val storage: Storage) {
     companion object {
@@ -10,6 +11,8 @@ class TokenHolder(private val storage: Storage) {
         const val KEY_LOGGED_USER = "key_logged_user"
 
         val KEY_USER_ID = "key_user_id"
+
+        private const val KEY_INSTAGRAM_OBJECT = "key_instagram_object"
 
         private const val KEY_TOKEN = "key_token"
         private const val KEY_EMAIL = "key_email"
@@ -22,17 +25,13 @@ class TokenHolder(private val storage: Storage) {
     val id: String?
         get() = storage.getString(KEY_ID)
 
-    fun saveSession(token: String, email: String, id: String) {
+    fun saveSession(instagram4Android: Instagram4Android) {
         clean()
 
-        storage.putString(KEY_TOKEN, token)
-        storage.putString(KEY_EMAIL, email)
-        storage.putString(KEY_ID, id)
+        storage.putObject(KEY_INSTAGRAM_OBJECT, instagram4Android)
     }
 
     fun clean() {
-        storage.remove(KEY_TOKEN)
-        storage.remove(KEY_EMAIL)
-        storage.remove(KEY_ID)
+        storage.remove(KEY_INSTAGRAM_OBJECT)
     }
 }

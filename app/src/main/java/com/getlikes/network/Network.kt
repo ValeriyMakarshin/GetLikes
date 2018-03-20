@@ -10,8 +10,8 @@ import retrofit2.converter.gson.GsonConverterFactory
 object Network {
     const val BASE_INSTAGRAM_URL = "https://www.instagram.com/"
 
-    fun getInsagramApi(tokenHolder: TokenHolder): InstagramApi =
-        baseInitRetrofit(BASE_INSTAGRAM_URL, tokenHolder)
+//    fun getInsagramApi(tokenHolder: TokenHolder): InstagramApi =
+//        baseInitRetrofit(BASE_INSTAGRAM_URL, tokenHolder)
 
     private fun getOkHttpClient(tokenHolder: TokenHolder): OkHttpClient {
         return OkHttpClient.Builder()
