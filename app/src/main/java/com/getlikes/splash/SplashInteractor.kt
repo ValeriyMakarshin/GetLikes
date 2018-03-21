@@ -1,5 +1,5 @@
 package com.getlikes.splash
 
 interface SplashInteractor {
-    fun getPhoto()
+    fun checkLogin(): Boolean
 }

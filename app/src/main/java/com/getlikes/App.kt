@@ -20,7 +20,6 @@ import com.getlikes.main.earncoins.EarnCoinsPresenter
 import com.getlikes.main.hashtags.HashTagsContract
 import com.getlikes.main.hashtags.HashTagsPresenter
 import com.getlikes.network.InstagramApi
-import com.getlikes.network.Network
 import com.getlikes.splash.SplashContract
 import com.getlikes.splash.SplashInteractor
 import com.getlikes.splash.SplashInteractorImpl
@@ -48,7 +47,9 @@ class App : Application(), KodeinAware {
 
         bind<TokenHolder>() with singleton { TokenHolder(instance()) }
 
-        bind<InstagramApi>(TAG_INSTAGRAM) with singleton { InstagramApi() }
+        bind<InstagramApi>() with singleton {
+            instance<TokenHolder>().getInstagramApi()
+        }
 
         bind<Instagram4Android>() with singleton {
             Instagram4Android.builder()
@@ -57,16 +58,12 @@ class App : Application(), KodeinAware {
                 .build()
         }
 
-        bind<InstagramApi>() with singleton {
-            InstagramApi()
-        }
-
         bind<SplashInteractor>() with singleton { SplashInteractorImpl(instance(), instance()) }
         bind<SplashContract.Presenter>() with singleton { SplashPresenter(instance()) }
 
         bind<StartContract.Presenter>() with singleton { StartPresenter() }
 
-        bind<LoginInteractor>() with singleton { LoginInteractorImpl(instance()) }
+        bind<LoginInteractor>() with singleton { LoginInteractorImpl(instance(), instance()) }
         bind<LoginContract.Presenter>() with singleton { LoginPresenter(instance(), instance()) }
 
         bind<MainContract.Presenter>() with singleton { MainPresenter() }
