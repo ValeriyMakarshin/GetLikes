@@ -13,10 +13,6 @@ class SplashActivity : BaseActivity<SplashContract.View, SplashContract.Presente
 
     override val presenter: SplashContract.Presenter by instance()
 
-    override fun viewInit() {
-        super.viewInit()
-    }
-
     override fun goToLogin() {
         Navigator.login(this)
     }

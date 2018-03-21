@@ -34,9 +34,11 @@ class TokenHolder(private val storage: Storage) {
     }
 
     fun getInstagramApi(): InstagramApi {
-        return storage.getObject<SaverInstagramSession>(
+        val instagramApi: InstagramApi = storage.getObject<SaverInstagramSession>(
             KEY_INSTAGRAM_OBJECT, SaverInstagramSession::class.java)?.toInstagrammApi()
             ?: InstagramApi()
+        instagramApi.setup()
+        return instagramApi
     }
 
     fun clean() {
