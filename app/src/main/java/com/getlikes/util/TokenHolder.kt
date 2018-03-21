@@ -1,7 +1,8 @@
 package com.getlikes.util
 
+import com.getlikes.network.InstagramApi
+import com.getlikes.savers.SaverInstagramSession
 import com.getlikes.util.storage.Storage
-import dev.niekirk.com.instagram4android.Instagram4Android
 
 class TokenHolder(private val storage: Storage) {
     companion object {
@@ -25,10 +26,17 @@ class TokenHolder(private val storage: Storage) {
     val id: String?
         get() = storage.getString(KEY_ID)
 
-    fun saveSession(instagram4Android: Instagram4Android) {
+    fun saveSession(instagramApi: InstagramApi) {
         clean()
 
-        storage.putObject(KEY_INSTAGRAM_OBJECT, instagram4Android)
+        storage.putObject(KEY_INSTAGRAM_OBJECT,
+            SaverInstagramSession.fromInstagrammApi(instagramApi))
+    }
+
+    fun getInstagramApi(): InstagramApi {
+        return storage.getObject<SaverInstagramSession>(
+            KEY_INSTAGRAM_OBJECT, SaverInstagramSession::class.java)?.toInstagrammApi()
+            ?: InstagramApi()
     }
 
     fun clean() {
