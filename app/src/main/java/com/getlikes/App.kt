@@ -58,7 +58,7 @@ class App : Application(), KodeinAware {
                 .build()
         }
 
-        bind<SplashInteractor>() with singleton { SplashInteractorImpl(instance(), instance()) }
+        bind<SplashInteractor>() with singleton { SplashInteractorImpl(instance()) }
         bind<SplashContract.Presenter>() with singleton { SplashPresenter(instance()) }
 
         bind<StartContract.Presenter>() with singleton { StartPresenter() }

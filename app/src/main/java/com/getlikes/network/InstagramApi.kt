@@ -10,10 +10,6 @@ class InstagramApi :
         this.deviceId = deviceId
     }
 
-    fun setUuid(uuid: String) {
-        this.uuid = uuid
-    }
-
     fun setIsLoggedIn(isLoggedIn: Boolean) {
         this.isLoggedIn = isLoggedIn
     }

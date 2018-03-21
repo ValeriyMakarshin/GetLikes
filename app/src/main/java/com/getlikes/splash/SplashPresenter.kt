@@ -10,6 +10,7 @@ class SplashPresenter(val splashInteractor: SplashInteractor) :
     override fun attach(view: SplashContract.View, bundle: Bundle?) {
         super.attach(view, bundle)
 
+        nextNavigate()
     }
 
     fun nextNavigate() {

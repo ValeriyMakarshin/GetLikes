@@ -12,7 +12,7 @@ class StorageImpl(private val sp: SharedPreferences, private val gson: Gson) : S
         val json = sp.getString(key, Strings.EMPTY)
         if (!Strings.isEmpty(json)) {
             try {
-                return gson.fromJson(json, Type::class.java) as T
+                return gson.fromJson(json, clazz) as T
             } catch (e: IOException) {
                 e.printStackTrace()
             }

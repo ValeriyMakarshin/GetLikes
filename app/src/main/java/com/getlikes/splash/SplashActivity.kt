@@ -15,7 +15,6 @@ class SplashActivity : BaseActivity<SplashContract.View, SplashContract.Presente
 
     override fun viewInit() {
         super.viewInit()
-        Navigator.login(this)
     }
 
     override fun goToLogin() {
