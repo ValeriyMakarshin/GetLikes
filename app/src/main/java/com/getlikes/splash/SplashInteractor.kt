@@ -1,3 +1,5 @@
 package com.getlikes.splash
 
-interface SplashInteractor
+interface SplashInteractor {
+    fun isFirstRun() : Boolean
+}

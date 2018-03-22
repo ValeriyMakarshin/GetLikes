@@ -58,7 +58,7 @@ class App : Application(), KodeinAware {
         }
 
 
-        bind<SplashInteractor>() with singleton { SplashInteractorImpl(instance(), instance()) }
+        bind<SplashInteractor>() with singleton { SplashInteractorImpl(instance()) }
         bind<SplashContract.Presenter>() with singleton { SplashPresenter(instance()) }
 
         bind<StartContract.Presenter>() with singleton { StartPresenter() }
@@ -89,5 +89,18 @@ class App : Application(), KodeinAware {
                 .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
                 .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                 .build())
+
+        checkFirstRun()
     }
+
+    fun checkFirstRun() {
+        val storage: Storage = kodein.instance()
+
+        if (storage.checkContains(Storage.KEY_FIRST_RUN)) {
+            storage.putBoolean(Storage.KEY_FIRST_RUN, false)
+        } else {
+            storage.putBoolean(Storage.KEY_FIRST_RUN, true)
+        }
+    }
+
 }

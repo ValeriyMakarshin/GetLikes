@@ -1,9 +1,12 @@
 package com.getlikes.splash
 
-import com.getlikes.util.TokenHolder
-import dev.niekirk.com.instagram4android.Instagram4Android
+import com.getlikes.util.storage.Storage
 
-class SplashInteractorImpl(val tokenHolder: TokenHolder, val instagram4Android: Instagram4Android)
+class SplashInteractorImpl(val storage: Storage)
     : SplashInteractor {
+
+    override fun isFirstRun(): Boolean {
+        return storage.getBoolean(Storage.KEY_FIRST_RUN, false)
+    }
 
 }

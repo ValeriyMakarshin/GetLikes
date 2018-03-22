@@ -1,5 +1,6 @@
 package com.getlikes.splash
 
+import com.getlikes.Navigator
 import com.getlikes.R
 import com.getlikes.core.ActivityInfo
 import com.getlikes.core.BaseActivity
@@ -12,4 +13,11 @@ class SplashActivity : BaseActivity<SplashContract.View, SplashContract.Presente
 
     override val presenter: SplashContract.Presenter by instance()
 
+    override fun goToStart() {
+        Navigator.start(this)
+    }
+
+    override fun goToLogin() {
+        Navigator.login(this)
+    }
 }
