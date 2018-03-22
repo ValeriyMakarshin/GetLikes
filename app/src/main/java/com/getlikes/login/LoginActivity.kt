@@ -23,7 +23,7 @@ class LoginActivity : BaseActivity<LoginContract.View, LoginContract.Presenter>(
         super.viewInit()
 
         uiLoginBt.setOnClickListener {
-            presenter.login(uiLoginEt.text.toString(), uiPasswordEt.text.toString())
+            presenter.loginInstagram(uiLoginEt.text.toString(), uiPasswordEt.text.toString())
         }
     }
 

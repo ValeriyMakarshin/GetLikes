@@ -48,7 +48,7 @@ class App : Application(), KodeinAware {
 
         bind<TokenHolder>() with singleton { TokenHolder(instance()) }
 
-        bind<Api>(TAG_INSTAGRAM) with singleton { NetworkBase.getApi() }
+        bind<Api>() with singleton { NetworkBase.getApi() }
 
         bind<Instagram4Android>() with singleton {
             Instagram4Android.builder()
@@ -63,7 +63,7 @@ class App : Application(), KodeinAware {
 
         bind<StartContract.Presenter>() with singleton { StartPresenter() }
 
-        bind<LoginInteractor>() with singleton { LoginInteractorImpl(instance()) }
+        bind<LoginInteractor>() with singleton { LoginInteractorImpl(instance(), instance()) }
         bind<LoginContract.Presenter>() with singleton { LoginPresenter(instance(), instance()) }
 
         bind<MainContract.Presenter>() with singleton { MainPresenter() }
