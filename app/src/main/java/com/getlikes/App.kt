@@ -19,8 +19,8 @@ import com.getlikes.main.earncoins.EarnCoinsContract
 import com.getlikes.main.earncoins.EarnCoinsPresenter
 import com.getlikes.main.hashtags.HashTagsContract
 import com.getlikes.main.hashtags.HashTagsPresenter
-import com.getlikes.network.InstagramApi
-import com.getlikes.network.Network
+import com.getlikes.network.Api
+import com.getlikes.network.NetworkBase
 import com.getlikes.splash.SplashContract
 import com.getlikes.splash.SplashInteractor
 import com.getlikes.splash.SplashInteractorImpl
@@ -48,7 +48,7 @@ class App : Application(), KodeinAware {
 
         bind<TokenHolder>() with singleton { TokenHolder(instance()) }
 
-        bind<InstagramApi>(TAG_INSTAGRAM) with singleton { Network.getInsagramApi(instance()) }
+        bind<Api>(TAG_INSTAGRAM) with singleton { NetworkBase.getApi(instance()) }
 
         bind<Instagram4Android>() with singleton {
             Instagram4Android.builder()

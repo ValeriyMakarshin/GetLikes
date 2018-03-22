@@ -9,7 +9,7 @@ import retrofit2.http.FormUrlEncoded
 import retrofit2.http.GET
 import retrofit2.http.POST
 
-interface InstagramApi {
+interface Api {
 
     @FormUrlEncoded
     @POST("accounts/login/ajax/")
