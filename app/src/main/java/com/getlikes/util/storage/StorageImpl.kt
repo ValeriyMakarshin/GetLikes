@@ -7,6 +7,7 @@ import java.io.IOException
 import java.lang.reflect.Type
 
 class StorageImpl(private val sp: SharedPreferences, private val gson: Gson) : Storage {
+    @Suppress("UNCHECKED_CAST")
     override fun <T> getObject(key: String, clazz: Type): T? {
         val json = sp.getString(key, Strings.EMPTY)
         if (!Strings.isEmpty(json)) {
@@ -31,8 +32,19 @@ class StorageImpl(private val sp: SharedPreferences, private val gson: Gson) : S
         return sp.getString(key, null)
     }
 
+    override fun putBoolean(key: String, value: Boolean) {
+        sp.edit().putBoolean(key, value).apply()
+    }
+
+    override fun getBoolean(key: String, defValue: Boolean): Boolean {
+        return sp.getBoolean(key, defValue)
+    }
+
     override fun remove(key: String) {
         sp.edit().remove(key).apply()
     }
 
+    override fun checkContains(key: String): Boolean {
+        return sp.contains(key)
+    }
 }

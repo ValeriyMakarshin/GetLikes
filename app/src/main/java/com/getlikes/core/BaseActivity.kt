@@ -13,6 +13,7 @@ abstract class BaseActivity<in V : BaseContract.View, out P : BaseContract.Prese
 
     abstract val presenter: P
 
+    @Suppress("UNCHECKED_CAST")
     @SuppressLint("MissingSuperCall")
     @CallSuper
     override fun onCreate(savedInstanceState: Bundle?) {

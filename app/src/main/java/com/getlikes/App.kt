@@ -21,6 +21,10 @@ import com.getlikes.main.hashtags.HashTagsContract
 import com.getlikes.main.hashtags.HashTagsPresenter
 import com.getlikes.network.InstagramApi
 import com.getlikes.network.Network
+import com.getlikes.splash.SplashContract
+import com.getlikes.splash.SplashInteractor
+import com.getlikes.splash.SplashInteractorImpl
+import com.getlikes.splash.SplashPresenter
 import com.getlikes.start.StartContract
 import com.getlikes.start.StartPresenter
 import com.getlikes.util.Strings
@@ -53,6 +57,10 @@ class App : Application(), KodeinAware {
                 .build()
         }
 
+
+        bind<SplashInteractor>() with singleton { SplashInteractorImpl(instance()) }
+        bind<SplashContract.Presenter>() with singleton { SplashPresenter(instance()) }
+
         bind<StartContract.Presenter>() with singleton { StartPresenter() }
 
         bind<LoginInteractor>() with singleton { LoginInteractorImpl(instance()) }
@@ -81,5 +89,18 @@ class App : Application(), KodeinAware {
                 .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
                 .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
                 .build())
+
+        checkFirstRun()
     }
+
+    fun checkFirstRun() {
+        val storage: Storage = kodein.instance()
+
+        if (storage.checkContains(Storage.KEY_FIRST_RUN)) {
+            storage.putBoolean(Storage.KEY_FIRST_RUN, false)
+        } else {
+            storage.putBoolean(Storage.KEY_FIRST_RUN, true)
+        }
+    }
+
 }
