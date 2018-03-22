@@ -49,8 +49,10 @@ dependencies {
     implementation rxJavaLibs
     implementation retrofitLibs
     implementation okHttpLibs
-    implementation stethoLibs
     implementation kodeinLibs
+
+    debugImplementation stethoLibs
+
 
     implementation "com.github.charlieAndroidDev:Instagram4Android:0.2.7"
 //    implementation moxyLibs

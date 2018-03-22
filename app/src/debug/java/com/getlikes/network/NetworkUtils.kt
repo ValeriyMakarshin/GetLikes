@@ -12,7 +12,11 @@ class NetworkUtils {
         }
 
         fun init(context: Context) {
-            Stetho.initializeWithDefaults(context)
+            Stetho.initialize(
+                Stetho.newInitializerBuilder(context)
+                    .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(context))
+                    .enableDumpapp(Stetho.defaultDumperPluginsProvider(context))
+                    .build())
         }
     }
 }
