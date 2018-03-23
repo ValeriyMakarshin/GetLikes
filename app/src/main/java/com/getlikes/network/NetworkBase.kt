@@ -1,5 +1,6 @@
 package com.getlikes.network
 
+import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
 import retrofit2.Retrofit
@@ -28,20 +29,34 @@ object NetworkBase {
         builder.addInterceptor { chain ->
             var request: Request = chain.request()
 
-            val requestUrl = request.url()
-            val hash = sortedSetOf(requestUrl.queryParameterNames())
-                .map {
-                    { name: String -> requestUrl.queryParameterValues(name) }
-                }
-                .joinToString().plus(SALT)
+            val formBody = request.body() as FormBody
 
-            request = request.newBuilder()
-                .url(request.url()
-                    .newBuilder()
-                    .addQueryParameter(NAME_SIGNATURE, hash)
-                    .build())
+            val pairs = ArrayList<Pair<String, String>>()
+            for (i in 0 until formBody.size()) {
+                pairs.add(Pair(formBody.encodedName(i), formBody.encodedValue(i)))
+            }
+
+            pairs.sortWith(Comparator { o1, o2 ->
+                o2?.first?.let { o1?.first?.compareTo(it) }
+                    ?: throw NullPointerException("Null formBody name")
+            })
+
+            val hash = pairs.joinToString { pair -> pair.second }.plus(SALT)
+
+            val newBody = FormBody.Builder()
+
+            for (pair in pairs) {
+                newBody.add(pair.first, pair.second)
+            }
+
+            newBody.add(NAME_SIGNATURE, hash)
+
+            val newRequest = Request.Builder()
+                .url(request.url())
+                .post(newBody.build())
                 .build()
-            chain.proceed(request)
+
+            chain.proceed(newRequest)
         }
         return builder.build()
     }
