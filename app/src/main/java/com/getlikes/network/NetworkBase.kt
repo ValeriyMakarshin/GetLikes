@@ -41,19 +41,20 @@ object NetworkBase {
                     ?: throw NullPointerException("Null formBody name")
             })
 
-            val hash = pairs.joinToString { pair -> pair.second }.plus(SALT)
+            val hash = pairs
+                .joinToString(separator = "", transform = { pair -> pair.second })
+                .plus(SALT)
 
             val newBody = FormBody.Builder()
-
-            for (pair in pairs) {
-                newBody.add(pair.first, pair.second)
-            }
-
-            newBody.add(NAME_SIGNATURE, hash)
+                .apply {
+                    pairs.forEach { add(it.first, it.second) }
+                    add(NAME_SIGNATURE, hash)
+                }
+                .build()
 
             val newRequest = Request.Builder()
                 .url(request.url())
-                .post(newBody.build())
+                .post(newBody)
                 .build()
 
             chain.proceed(newRequest)
