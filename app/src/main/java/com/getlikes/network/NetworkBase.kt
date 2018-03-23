@@ -1,5 +1,6 @@
 package com.getlikes.network
 
+import com.getlikes.util.CipherUtil
 import okhttp3.FormBody
 import okhttp3.OkHttpClient
 import okhttp3.Request
@@ -27,23 +28,29 @@ object NetworkBase {
         NetworkUtils.addStethoInterceptor(builder)
 
         builder.addInterceptor { chain ->
-            var request: Request = chain.request()
+            val request: Request = chain.request()
 
             val formBody = request.body() as FormBody
 
             val pairs = ArrayList<Pair<String, String>>()
-            for (i in 0 until formBody.size()) {
-                pairs.add(Pair(formBody.encodedName(i), formBody.encodedValue(i)))
-            }
+                .apply {
+                    for (i in 0 until formBody.size()) {
+                        this.add(Pair(formBody.encodedName(i), formBody.encodedValue(i)))
+                    }
+                }
 
-            pairs.sortWith(Comparator { o1, o2 ->
-                o2?.first?.let { o1?.first?.compareTo(it) }
-                    ?: throw NullPointerException("Null formBody name")
-            })
+            val hash = CipherUtil.md5Hex(
+                pairs
+                    .apply {
+                        sortWith(Comparator { o1, o2 ->
+                            o2?.first?.let { o1?.first?.compareTo(it) }
+                                ?: throw NullPointerException("Null formBody name")
+                        })
+                    }
+                    .joinToString(separator = "", transform = { pair -> pair.second })
+                    .plus(SALT)
+            )
 
-            val hash = pairs
-                .joinToString(separator = "", transform = { pair -> pair.second })
-                .plus(SALT)
 
             val newBody = FormBody.Builder()
                 .apply {
