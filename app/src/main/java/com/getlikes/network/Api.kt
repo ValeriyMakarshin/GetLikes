@@ -10,8 +10,38 @@ interface Api {
     @FormUrlEncoded
     @POST("login")
     fun login(@Field("username") username: String,
-              @Field("user_id") user_id: Long
+              @Field("user_id") userId: Long
     ): Observable<String>
 
+    @FormUrlEncoded
+    @POST("balance")
+    fun balance(@Field("session_id") sessionId: String
+    ): Observable<String>
+
+    @FormUrlEncoded
+    @POST("task")
+    fun task(@Field("session_id") sessionId: String
+    ): Observable<String>
+
+    @FormUrlEncoded
+    @POST("skip")
+    fun skip(@Field("session_id") sessionId: String
+    ): Observable<String>
+
+    @FormUrlEncoded
+    @POST("like")
+    fun like(@Field("session_id") sessionId: String,
+             @Field("media_id") mediaId: Long
+    ): Observable<String>
+
+
+    @FormUrlEncoded
+    @POST("order")
+    fun order(@Field("session_id") sessionId: String,
+              @Field("thumbnail_url") thumbnailUrl: String,
+              @Field("standard_resolution_url") standardResolutionUrl: String,
+              @Field("amount") amount: Int
+
+    ): Observable<String>
 
 }
