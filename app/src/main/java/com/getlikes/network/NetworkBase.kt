@@ -39,7 +39,7 @@ object NetworkBase {
                     }
                 }
 
-            val hash = CipherUtil.md5Hex(
+            val signature = CipherUtil.md5Hex(
                 pairs
                     .apply {
                         sortWith(Comparator { o1, o2 ->
@@ -55,7 +55,7 @@ object NetworkBase {
             val newBody = FormBody.Builder()
                 .apply {
                     pairs.forEach { add(it.first, it.second) }
-                    add(NAME_SIGNATURE, hash)
+                    add(NAME_SIGNATURE, signature)
                 }
                 .build()
 
