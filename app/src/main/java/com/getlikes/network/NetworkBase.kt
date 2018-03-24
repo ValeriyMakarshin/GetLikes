@@ -24,7 +24,7 @@ object NetworkBase {
         val builder = OkHttpClient.Builder()
         NetworkUtils.addStethoInterceptor(builder)
 
-        builder.addInterceptor(SignatureInterceptor())
+//        builder.addInterceptor(SignatureInterceptor())
 
         return builder.build()
     }
