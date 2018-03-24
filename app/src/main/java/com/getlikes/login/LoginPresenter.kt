@@ -1,6 +1,7 @@
 package com.getlikes.login
 
 import com.getlikes.core.BasePresenter
+import com.getlikes.model.LoginModel
 import com.getlikes.model.Status
 import com.getlikes.util.TokenHolder
 import com.getlikes.util.storage.Storage
@@ -26,7 +27,7 @@ class LoginPresenter(private val loginInteractor: LoginInteractor, private val s
     private fun loginApi(username: String, userId: Long) {
         unsubscribeSubscription()
 
-        baseObservable(loginInteractor.loginApi(username, userId), {
+        baseObservable(loginInteractor.loginApi(LoginModel(username, userId)), {
             view?.goToMain()
         })
     }
