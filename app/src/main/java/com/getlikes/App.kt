@@ -3,7 +3,6 @@ package com.getlikes
 import android.app.Application
 import android.content.Context
 import com.crashlytics.android.Crashlytics
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.getlikes.login.LoginContract
 import com.getlikes.login.LoginInteractor
 import com.getlikes.login.LoginInteractorImpl
@@ -80,16 +79,12 @@ class App : Application(), KodeinAware {
         super.onCreate()
         Fabric.with(this, Crashlytics())
 
-        val instagram4Android: Instagram4Android = kodein.instance()
-
-        instagram4Android.client?.networkInterceptors()?.add(StethoInterceptor())
-
         NetworkUtils.init(this)
 
         checkFirstRun()
     }
 
-    fun checkFirstRun() {
+    private fun checkFirstRun() {
         val storage: Storage = kodein.instance()
 
         if (storage.checkContains(Storage.KEY_FIRST_RUN)) {
