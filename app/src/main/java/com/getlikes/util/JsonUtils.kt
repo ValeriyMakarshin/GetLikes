@@ -16,5 +16,4 @@ class JsonUtils {
             return buffer.readUtf8()
         }
     }
-
 }

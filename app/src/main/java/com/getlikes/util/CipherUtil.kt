@@ -2,11 +2,10 @@ package com.getlikes.util
 
 import java.security.NoSuchAlgorithmException
 
-
 class CipherUtil {
     companion object {
         const val MD5 = "MD5"
-
+        const val FLAG = 0xFF
 
         fun md5Hex(s: String): String {
             try {
@@ -17,7 +16,7 @@ class CipherUtil {
 
                 val hexString = StringBuilder()
                 for (aMessageDigest in messageDigest) {
-                    var h = Integer.toHexString(0xFF and aMessageDigest.toInt())
+                    var h = Integer.toHexString(FLAG and aMessageDigest.toInt())
                     while (h.length < 2)
                         h = "0$h"
                     hexString.append(h)
