@@ -7,9 +7,6 @@ import retrofit2.converter.gson.GsonConverterFactory
 
 object NetworkBase {
     const val BASE_URL = "https://getlikesapp.net/api/"
-    const val SALT = "7dV~US"
-    const val NAME_SIGNATURE = "signature"
-
 
     fun getApi(): Api =
         Retrofit.Builder()
@@ -24,7 +21,7 @@ object NetworkBase {
         val builder = OkHttpClient.Builder()
         NetworkUtils.addStethoInterceptor(builder)
 
-//        builder.addInterceptor(SignatureInterceptor())
+        builder.addInterceptor(SignatureInterceptor())
 
         return builder.build()
     }

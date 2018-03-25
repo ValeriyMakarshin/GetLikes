@@ -27,7 +27,7 @@ class LoginPresenter(private val loginInteractor: LoginInteractor, private val s
     private fun loginApi(username: String, userId: Long) {
         unsubscribeSubscription()
 
-        baseObservable(loginInteractor.loginApi(LoginModel(username, userId)), {
+        baseObservable(loginInteractor.loginApi(LoginModel(username, userId.toString())), {
             view?.goToMain()
         })
     }

@@ -8,5 +8,5 @@ data class LoginModel(
     val username: String,
 
     @Expose @SerializedName("user_id")
-    val userId: Long
+    val userId: String
 )
