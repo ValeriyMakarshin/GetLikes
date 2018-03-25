@@ -15,7 +15,6 @@ class SignatureInterceptor : Interceptor {
         val JSON = MediaType.parse("application/json; charset=utf-8")
     }
 
-
     override fun intercept(chain: Interceptor.Chain?): Response {
         if (chain == null) {
             throw NullPointerException("Interceptor.Chain is null")
@@ -23,21 +22,20 @@ class SignatureInterceptor : Interceptor {
 
         val request: Request = chain.request()
 
-        val json = JsonUtils.bodyToString(request.body())
-        val map = Gson().fromJson<TreeMap<String, String>>(json, TreeMap::class.java)
+        val map = Gson().fromJson<TreeMap<String, String>>(
+            JsonUtils.bodyToString(request.body()),
+            TreeMap::class.java)
 
-        val key = CipherUtil.md5Hex(
-            map.values
-                .joinToString(Strings.EMPTY)
-                .plus(SALT))
-
-        map[NAME_SIGNATURE] = key
-
-        val newBody = RequestBody.create(JSON, Gson().toJson(map))
+        map[NAME_SIGNATURE] =
+            CipherUtil.md5Hex(
+                map.values
+                    .joinToString(Strings.EMPTY)
+                    .plus(SALT))
 
         val newRequest = Request.Builder()
             .url(request.url())
-            .post(newBody)
+            .post(
+                RequestBody.create(JSON, Gson().toJson(map)))
             .build()
 
         return chain.proceed(newRequest)
