@@ -3,8 +3,6 @@ package com.getlikes
 import android.app.Application
 import android.content.Context
 import com.crashlytics.android.Crashlytics
-import com.facebook.stetho.Stetho
-import com.facebook.stetho.okhttp3.StethoInterceptor
 import com.getlikes.login.LoginContract
 import com.getlikes.login.LoginInteractor
 import com.getlikes.login.LoginInteractorImpl
@@ -19,8 +17,9 @@ import com.getlikes.main.earncoins.EarnCoinsContract
 import com.getlikes.main.earncoins.EarnCoinsPresenter
 import com.getlikes.main.hashtags.HashTagsContract
 import com.getlikes.main.hashtags.HashTagsPresenter
-import com.getlikes.network.InstagramApi
-import com.getlikes.network.Network
+import com.getlikes.network.Api
+import com.getlikes.network.NetworkBase
+import com.getlikes.network.NetworkUtils
 import com.getlikes.splash.SplashContract
 import com.getlikes.splash.SplashInteractor
 import com.getlikes.splash.SplashInteractorImpl
@@ -48,7 +47,7 @@ class App : Application(), KodeinAware {
 
         bind<TokenHolder>() with singleton { TokenHolder(instance()) }
 
-        bind<InstagramApi>(TAG_INSTAGRAM) with singleton { Network.getInsagramApi(instance()) }
+        bind<Api>() with singleton { NetworkBase.getApi() }
 
         bind<Instagram4Android>() with singleton {
             Instagram4Android.builder()
@@ -63,7 +62,7 @@ class App : Application(), KodeinAware {
 
         bind<StartContract.Presenter>() with singleton { StartPresenter() }
 
-        bind<LoginInteractor>() with singleton { LoginInteractorImpl(instance()) }
+        bind<LoginInteractor>() with singleton { LoginInteractorImpl(instance(), instance()) }
         bind<LoginContract.Presenter>() with singleton { LoginPresenter(instance(), instance()) }
 
         bind<MainContract.Presenter>() with singleton { MainPresenter() }
@@ -80,20 +79,12 @@ class App : Application(), KodeinAware {
         super.onCreate()
         Fabric.with(this, Crashlytics())
 
-        val instagram4Android: Instagram4Android = kodein.instance()
-
-        instagram4Android.client?.networkInterceptors()?.add(StethoInterceptor())
-
-        Stetho.initialize(
-            Stetho.newInitializerBuilder(this)
-                .enableWebKitInspector(Stetho.defaultInspectorModulesProvider(this))
-                .enableDumpapp(Stetho.defaultDumperPluginsProvider(this))
-                .build())
+        NetworkUtils.init(this)
 
         checkFirstRun()
     }
 
-    fun checkFirstRun() {
+    private fun checkFirstRun() {
         val storage: Storage = kodein.instance()
 
         if (storage.checkContains(Storage.KEY_FIRST_RUN)) {

@@ -7,7 +7,7 @@ apply plugin: 'io.fabric'
 def versionMajor = 0
 def versionMinor = 0
 def versionPatch = 0
-def versionBuild = 9
+def versionBuild = 10
 def versionSuffix = versionBuild > 0 ? "-beta" : ""
 
 android {
@@ -49,8 +49,10 @@ dependencies {
     implementation rxJavaLibs
     implementation retrofitLibs
     implementation okHttpLibs
-    implementation stethoLibs
     implementation kodeinLibs
+
+    debugImplementation stethoLibs
+
 
     implementation "com.github.charlieAndroidDev:Instagram4Android:0.2.7"
 //    implementation moxyLibs
