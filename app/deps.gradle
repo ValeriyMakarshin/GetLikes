@@ -74,7 +74,6 @@ ext {
             junit     : "junit:junit:$versions.junit",
             testRunner: "com.android.support.test:runner:$versions.test",
             rules     : "com.android.support.test:rules:$versions.test"
-//            mockito   : "org.mockito:mockito-core:$versions.mockito",
     ]
     kotlinTest = [
             test         : "org.jetbrains.kotlin:kotlin-test:$versions.kotlin",
