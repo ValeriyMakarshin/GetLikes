@@ -13,6 +13,8 @@ import com.getlikes.main.choice.ChoiceContract
 import com.getlikes.main.choice.ChoiceInteractor
 import com.getlikes.main.choice.ChoiceInteractorImpl
 import com.getlikes.main.choice.ChoicePresenter
+import com.getlikes.main.choice.root.ChoiceRootContract
+import com.getlikes.main.choice.root.ChoiceRootPresenter
 import com.getlikes.main.earncoins.EarnCoinsContract
 import com.getlikes.main.earncoins.EarnCoinsPresenter
 import com.getlikes.main.hashtags.HashTagsContract
@@ -66,6 +68,8 @@ class App : Application(), KodeinAware {
         bind<LoginContract.Presenter>() with singleton { LoginPresenter(instance(), instance()) }
 
         bind<MainContract.Presenter>() with singleton { MainPresenter() }
+
+        bind<ChoiceRootContract.Presenter>() with singleton { ChoiceRootPresenter() }
 
         bind<ChoiceInteractor>() with singleton { ChoiceInteractorImpl(instance()) }
         bind<ChoiceContract.Presenter>() with singleton { ChoicePresenter(instance()) }

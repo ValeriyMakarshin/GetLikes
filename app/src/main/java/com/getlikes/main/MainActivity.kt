@@ -18,6 +18,5 @@ class MainActivity : BaseActivity<MainContract.View, MainContract.Presenter>(), 
 
         uiMainVp.adapter = MainPagerAdapter(supportFragmentManager, this)
         uiMainTl.setupWithViewPager(uiMainVp)
-
     }
 }
