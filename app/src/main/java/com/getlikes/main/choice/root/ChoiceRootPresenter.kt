@@ -7,6 +7,6 @@ class ChoiceRootPresenter : BasePresenter<ChoiceRootContract.View>(), ChoiceRoot
     override fun attach(view: ChoiceRootContract.View, bundle: Bundle?) {
         super.attach(view, bundle)
 
-        view.openFirst()
+        view.choicePhoto()
     }
 }

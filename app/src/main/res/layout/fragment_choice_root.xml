@@ -6,7 +6,7 @@
     >
 
     <FrameLayout
-        android:id="@+id/uiContentFl"
+        android:id="@+id/uiContainerFl"
         android:layout_height="0dp"
         android:layout_width="0dp"
         app:layout_constraintBottom_toBottomOf="parent"

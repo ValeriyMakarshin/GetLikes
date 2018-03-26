@@ -4,7 +4,7 @@ import com.getlikes.core.BaseContract
 
 interface ChoiceRootContract {
     interface View : BaseContract.View {
-        fun openFirst()
+        fun choicePhoto()
     }
 
     interface Presenter : BaseContract.Presenter<View>

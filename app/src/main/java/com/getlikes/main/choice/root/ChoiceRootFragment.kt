@@ -13,8 +13,8 @@ class ChoiceRootFragment : BaseFragment<ChoiceRootContract.View, ChoiceRootContr
 
     override val presenter: ChoiceRootContract.Presenter by instance()
 
-    override fun openFirst() {
-        Navigator
+    override fun choicePhoto() {
+        Navigator.choicePhoto(fragmentManager, R.id.uiContainerFl)
     }
 
 }
