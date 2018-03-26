@@ -6,7 +6,6 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.getlikes.R
 import com.getlikes.core.BaseFragment
-import com.getlikes.main.choice.ChoiceFragment
 import com.getlikes.main.choice.root.ChoiceRootFragment
 import com.getlikes.main.earncoins.EarnCoinsFragment
 import com.getlikes.main.hashtags.HashTagsFragment

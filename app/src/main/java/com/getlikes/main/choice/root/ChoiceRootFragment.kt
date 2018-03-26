@@ -1,5 +1,6 @@
 package com.getlikes.main.choice.root
 
+import com.getlikes.Navigator
 import com.getlikes.R
 import com.getlikes.core.ActivityInfo
 import com.getlikes.core.BaseFragment
@@ -11,5 +12,9 @@ class ChoiceRootFragment : BaseFragment<ChoiceRootContract.View, ChoiceRootContr
     override val activityInfo: ActivityInfo = ActivityInfo(R.layout.fragment_choice_root)
 
     override val presenter: ChoiceRootContract.Presenter by instance()
+
+    override fun openFirst() {
+        Navigator
+    }
 
 }
