@@ -30,13 +30,14 @@
         />
 
     <TextView
-        android:drawableLeft="@drawable/ic_heart_24dp"
         android:drawablePadding="8dp"
         android:drawableStart="@drawable/ic_heart_24dp"
         android:gravity="center"
         android:id="@+id/uiLikesTv"
         android:layout_height="wrap_content"
         android:layout_width="wrap_content"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
         android:textColor="@android:color/white"
         app:layout_constraintBottom_toBottomOf="@+id/uiLikesPlaceholderV"
         app:layout_constraintEnd_toEndOf="@+id/uiLikesPlaceholderV"

@@ -56,8 +56,6 @@ dependencies {
     }
     debugImplementation stethoLibs
 
-    kapt glideKaptLibs
-
     testImplementation kotlinTestLibs
 
     androidTestImplementation androidTestsLibs

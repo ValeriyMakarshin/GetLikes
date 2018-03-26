@@ -1,11 +1,12 @@
 package com.getlikes.adapter.holder.selectphoto
 
-import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
+import com.bumptech.glide.Glide
 import com.getlikes.R
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
+import kotlinx.android.synthetic.main.item_photo.view.*
 
 class SelectPhotoHolder(itemView: View) : SelectPhotoBaseHolder(itemView) {
 
@@ -18,8 +19,9 @@ class SelectPhotoHolder(itemView: View) : SelectPhotoBaseHolder(itemView) {
     }
 
     override fun onDraw(item: InstagramFeedItem) {
-        Log.d("123", "132")
-
-        item.image_versions2.candidates.last().url
+        itemView.uiLikesTv.text = item.like_count.toString()
+        Glide.with(itemView.context)
+            .load(item.image_versions2.candidates.last().url)
+            .into(itemView.uiPhotoIv)
     }
 }
