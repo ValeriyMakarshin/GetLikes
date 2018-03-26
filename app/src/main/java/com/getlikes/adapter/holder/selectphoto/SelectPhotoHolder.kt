@@ -1,5 +1,6 @@
 package com.getlikes.adapter.holder.selectphoto
 
+import android.util.Log
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -17,6 +18,8 @@ class SelectPhotoHolder(itemView: View) : SelectPhotoBaseHolder(itemView) {
     }
 
     override fun onDraw(item: InstagramFeedItem) {
+        Log.d("123", "132")
 
+        item.image_versions2.candidates.last().url
     }
 }

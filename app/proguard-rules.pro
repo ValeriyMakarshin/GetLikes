@@ -20,13 +20,25 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+# Stetho
 -keep class com.facebook.stetho.** { *; }
 -dontwarn com.facebook.stetho.**
 
+# Retrofit
 -dontnote retrofit2.Platform
 -dontwarn retrofit2.Platform$Java8
 -keepattributes Exceptions
 -keepattributes Signature
 
+# Instagram4Android
 -keep class com.github.charlieAndroidDev.**
 -dontwarn com.github.charlieAndroidDev
+
+# Glide
+-keep public class * implements com.bumptech.glide.module.GlideModule
+-keep public class * extends com.bumptech.glide.module.AppGlideModule
+-keep public enum com.bumptech.glide.load.ImageHeaderParser$** {
+  **[] $VALUES;
+  public *;
+}
+-dontwarn com.bumptech.glide.load.resource.bitmap.VideoDecoder

@@ -50,19 +50,16 @@ dependencies {
     implementation retrofitLibs
     implementation okHttpLibs
     implementation kodeinLibs
-
-    debugImplementation stethoLibs
-
-
-    implementation "com.github.charlieAndroidDev:Instagram4Android:0.2.7"
-//    implementation moxyLibs
+    implementation glideLibs
+    implementation instagramLibs
 
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
         transitive = true
     }
 
-    kapt 'com.arello-mobile:moxy-compiler:1.5.3'
+    debugImplementation stethoLibs
 
+    kapt glideKaptLibs
 
     testImplementation kotlinTestLibs
 
