@@ -13,6 +13,8 @@ import com.getlikes.main.choice.photo.ChoicePhotoContract
 import com.getlikes.main.choice.photo.ChoicePhotoInteractor
 import com.getlikes.main.choice.photo.ChoicePhotoInteractorImpl
 import com.getlikes.main.choice.photo.ChoicePhotoPresenter
+import com.getlikes.main.choice.photo.rate.ChoiceRateContract
+import com.getlikes.main.choice.photo.rate.ChoiceRatePresenter
 import com.getlikes.main.choice.root.ChoiceRootContract
 import com.getlikes.main.choice.root.ChoiceRootPresenter
 import com.getlikes.main.earncoins.EarnCoinsContract
@@ -73,6 +75,8 @@ class App : Application(), KodeinAware {
 
         bind<ChoicePhotoInteractor>() with singleton { ChoicePhotoInteractorImpl(instance()) }
         bind<ChoicePhotoContract.Presenter>() with singleton { ChoicePhotoPresenter(instance()) }
+
+        bind<ChoiceRateContract.Presenter>() with singleton { ChoiceRatePresenter() }
 
         bind<EarnCoinsContract.Presenter>() with singleton { EarnCoinsPresenter() }
 
