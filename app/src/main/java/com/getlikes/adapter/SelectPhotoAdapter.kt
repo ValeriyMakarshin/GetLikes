@@ -5,10 +5,14 @@ import com.getlikes.adapter.holder.selectphoto.SelectPhotoBaseHolder
 import com.getlikes.adapter.holder.selectphoto.SelectPhotoHeader
 import com.getlikes.adapter.holder.selectphoto.SelectPhotoHolder
 import com.getlikes.core.BaseRAdapter
+import com.getlikes.core.OnClickListener
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
 
-class SelectPhotoAdapter(array: Array<InstagramFeedItem>) :
-    BaseRAdapter<InstagramFeedItem, SelectPhotoBaseHolder>(array) {
+class SelectPhotoAdapter(array: Array<InstagramFeedItem>,
+                         onClickListener: OnClickListener<InstagramFeedItem>) :
+    BaseRAdapter<InstagramFeedItem, SelectPhotoBaseHolder>(array,
+        onClickListener = onClickListener) {
+
     companion object {
         const val ITEM_VIEW_TYPE_HEADER = 1
         const val ITEM_VIEW_TYPE_ITEM = 2

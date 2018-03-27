@@ -1,16 +1,19 @@
 package com.getlikes.main.choice.photo
 
 import android.support.v7.widget.GridLayoutManager
+import com.getlikes.Navigator
 import com.getlikes.R
 import com.getlikes.adapter.SelectPhotoAdapter
 import com.getlikes.core.ActivityInfo
 import com.getlikes.core.BaseFragment
+import com.getlikes.core.OnClickListener
 import com.github.salomonbrys.kodein.instance
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
 import kotlinx.android.synthetic.main.fragment_choice.*
 
 class ChoicePhotoFragment : BaseFragment<ChoicePhotoContract.View, ChoicePhotoContract.Presenter>(),
-    ChoicePhotoContract.View {
+    ChoicePhotoContract.View, OnClickListener<InstagramFeedItem> {
+
     companion object {
         const val SPAN_COUNT = 3
     }
@@ -34,6 +37,14 @@ class ChoicePhotoFragment : BaseFragment<ChoicePhotoContract.View, ChoicePhotoCo
     }
 
     override fun showList(list: List<InstagramFeedItem>) {
-        uiPhotoRv.adapter = SelectPhotoAdapter(list.toTypedArray())
+        uiPhotoRv.adapter = SelectPhotoAdapter(list.toTypedArray(), this)
+    }
+
+    override fun onClick(item: InstagramFeedItem) {
+        choiceRate()
+    }
+
+    override fun choiceRate() {
+        Navigator.choiceRate(fragmentManager, R.id.uiContainerFl)
     }
 }
