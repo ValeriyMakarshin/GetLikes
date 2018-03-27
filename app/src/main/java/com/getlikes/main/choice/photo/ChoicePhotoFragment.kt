@@ -17,8 +17,7 @@ class ChoicePhotoFragment : BaseFragment<ChoicePhotoContract.View, ChoicePhotoCo
 
     override val presenter: ChoicePhotoContract.Presenter by instance()
 
-    override val activityInfo: ActivityInfo
-        get() = ActivityInfo(R.layout.fragment_choice)
+    override val activityInfo: ActivityInfo = ActivityInfo(R.layout.fragment_choice)
 
     override fun viewInit() {
         super.viewInit()
