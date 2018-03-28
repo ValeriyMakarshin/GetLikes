@@ -1,12 +1,12 @@
 package com.getlikes.model
 
-enum class Status(val value: String) {
+enum class InstagramStatus(val value: String) {
     OK("ok"),
     FAIL("fail");
 
     companion object {
-        fun parseStatus(value: String): Status? {
-            Status.values().forEach {
+        fun parseStatus(value: String): InstagramStatus? {
+            InstagramStatus.values().forEach {
                 if (it.value == value)
                     return it
             }

@@ -1,6 +1,8 @@
 package com.getlikes.network
 
+import com.getlikes.model.Answer
 import com.getlikes.model.LoginModel
+import com.getlikes.model.Session
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -10,7 +12,7 @@ import retrofit2.http.POST
 interface Api {
 
     @POST("login")
-    fun login(@Body loginModel: LoginModel): Observable<Map<String, String>>
+    fun login(@Body loginModel: LoginModel): Observable<Answer<Session>>
 
     @FormUrlEncoded
     @POST("balance")
