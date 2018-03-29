@@ -20,8 +20,12 @@ class StorageImpl(private val sp: SharedPreferences, private val gson: Gson) : S
         return null
     }
 
-    override fun putObject(key: String, any: Any) {
-        sp.edit().putString(key, gson.toJson(any)).apply()
+    override fun putObject(key: String, any: Any?) {
+        any?.let {
+            sp.edit()
+                .putString(key, gson.toJson(it))
+                .apply()
+        }
     }
 
     override fun putString(key: String, str: String) {

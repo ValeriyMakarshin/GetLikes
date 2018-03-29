@@ -1,3 +1,7 @@
 package com.getlikes.main.earncoins
 
-interface EarnCoinsInteractor
+import io.reactivex.Observable
+
+interface EarnCoinsInteractor {
+    fun getTask(): Observable<String>
+}

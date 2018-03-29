@@ -9,7 +9,7 @@ interface Storage {
 
     fun <T> getObject(key: String, clazz: Type): T?
 
-    fun putObject(key: String, any: Any)
+    fun putObject(key: String, any: Any?)
 
     fun putString(key: String, str: String)
 

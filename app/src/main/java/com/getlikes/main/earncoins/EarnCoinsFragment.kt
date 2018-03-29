@@ -11,4 +11,5 @@ class EarnCoinsFragment : BaseFragment<EarnCoinsContract.View, EarnCoinsContract
 
     override val activityInfo: ActivityInfo = ActivityInfo(R.layout.fragment_earncoins)
 
+
 }

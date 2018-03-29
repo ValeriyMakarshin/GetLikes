@@ -21,7 +21,7 @@ interface Api {
 
     @FormUrlEncoded
     @POST("task")
-    fun task(@Field("session_id") sessionId: String
+    fun task(@Body session: Session
     ): Observable<String>
 
     @FormUrlEncoded
