@@ -1,6 +1,6 @@
 package com.getlikes.main.choice.photo.rate
 
-enum class Rates(likes: Int, coins: Int) {
+enum class Rates(val likes: Int, val coins: Int) {
     RATE_10(10, 10),
     RATE_20(20, 20),
     RATE_30(30, 30),

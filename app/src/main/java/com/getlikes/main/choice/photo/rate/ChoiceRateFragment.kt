@@ -7,6 +7,7 @@ import com.getlikes.core.ActivityInfo
 import com.getlikes.core.BaseFragment
 import com.getlikes.core.OnClickListener
 import com.github.salomonbrys.kodein.instance
+import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
 import kotlinx.android.synthetic.main.fragment_choice_rate.*
 
 class ChoiceRateFragment : BaseFragment<ChoiceRateContract.View, ChoiceRateContract.Presenter>(),
@@ -21,8 +22,8 @@ class ChoiceRateFragment : BaseFragment<ChoiceRateContract.View, ChoiceRateContr
         uiRateRv.layoutManager = LinearLayoutManager(context)
     }
 
-    override fun showList(array: Array<Rates>) {
-        uiRateRv.adapter = RateAdapter(array, this)
+    override fun showList(array: Array<Rates>, feedItem: InstagramFeedItem) {
+        uiRateRv.adapter = RateAdapter(array, feedItem, this)
     }
 
     override fun onClick(item: Rates) {
