@@ -27,7 +27,7 @@ class ChoicePhotoFragment : BaseFragment<ChoicePhotoContract.View, ChoicePhotoCo
         val manager = GridLayoutManager(context, SPAN_COUNT)
         manager.spanSizeLookup = object : GridLayoutManager.SpanSizeLookup() {
             override fun getSpanSize(position: Int): Int =
-                if (SelectPhotoAdapter.isHeader(position))
+                if ((uiPhotoRv.adapter as SelectPhotoAdapter).isHeader(position))
                     manager.spanCount
                 else
                     1
