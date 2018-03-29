@@ -9,7 +9,6 @@ class EarnCoinsFragment : BaseFragment<EarnCoinsContract.View, EarnCoinsContract
     EarnCoinsContract.View {
     override val presenter: EarnCoinsContract.Presenter by instance()
 
-    override val activityInfo: ActivityInfo
-        get() = ActivityInfo(R.layout.fragment_earncoins)
+    override val activityInfo: ActivityInfo = ActivityInfo(R.layout.fragment_earncoins)
 
 }

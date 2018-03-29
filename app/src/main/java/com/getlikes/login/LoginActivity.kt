@@ -16,8 +16,7 @@ class LoginActivity : BaseActivity<LoginContract.View, LoginContract.Presenter>(
 
     override val presenter: LoginContract.Presenter by instance()
 
-    override val activityInfo: ActivityInfo
-        get() = ActivityInfo(R.layout.activity_login)
+    override val activityInfo: ActivityInfo = ActivityInfo(R.layout.activity_login)
 
     override fun viewInit() {
         super.viewInit()

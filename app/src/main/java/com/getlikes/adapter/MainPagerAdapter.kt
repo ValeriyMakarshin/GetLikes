@@ -6,7 +6,7 @@ import android.support.v4.app.FragmentManager
 import android.support.v4.app.FragmentPagerAdapter
 import com.getlikes.R
 import com.getlikes.core.BaseFragment
-import com.getlikes.main.choice.ChoiceFragment
+import com.getlikes.main.choice.root.ChoiceRootFragment
 import com.getlikes.main.earncoins.EarnCoinsFragment
 import com.getlikes.main.hashtags.HashTagsFragment
 
@@ -24,12 +24,12 @@ class MainPagerAdapter(private val fm: FragmentManager,
     init {
         fragments = if (fm.fragments.size == 0) {
             arrayOf(
-                ChoiceFragment(),
+                ChoiceRootFragment(),
                 HashTagsFragment(),
                 EarnCoinsFragment())
         } else {
             arrayOf(
-                getFragmentFromManager(ChoiceFragment::class.java) as BaseFragment<*, *>,
+                getFragmentFromManager(ChoiceRootFragment::class.java) as BaseFragment<*, *>,
                 getFragmentFromManager(HashTagsFragment::class.java) as BaseFragment<*, *>,
                 getFragmentFromManager(EarnCoinsFragment::class.java) as BaseFragment<*, *>)
         }

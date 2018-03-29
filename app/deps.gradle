@@ -12,6 +12,8 @@ ext {
             stetho    : '1.5.0',
             kodein    : '4.1.0',
             moxy      : '1.5.3',
+            glide     : '4.6.1',
+            instagram : '0.2.7',
             test      : '1.0.1',
             junit     : '4.12',
             mockito   : '2.11.0',
@@ -56,12 +58,22 @@ ext {
             moxy      : "com.arello-mobile:moxy:$versions.moxy",
             moxyCompat: "com.arello-mobile:moxy-app-compat:$versions.moxy"
     ]
+    glide = [
+            glide: "com.github.bumptech.glide:glide:$versions.glide"
+    ]
+    instagram = [
+            instagram: "com.github.charlieAndroidDev:Instagram4Android:$versions.instagram"
+    ]
+
+
+    glideKapt = [
+            glideKapt: "com.github.bumptech.glide:compiler:$versions.glide"
+    ]
 
     tests = [
             junit     : "junit:junit:$versions.junit",
             testRunner: "com.android.support.test:runner:$versions.test",
             rules     : "com.android.support.test:rules:$versions.test"
-//            mockito   : "org.mockito:mockito-core:$versions.mockito",
     ]
     kotlinTest = [
             test         : "org.jetbrains.kotlin:kotlin-test:$versions.kotlin",
@@ -82,6 +94,11 @@ ext {
     stethoLibs = stetho.values()
     kodeinLibs = kodein.values()
     moxyLibs = moxy.values()
+    glideLibs = glide.values()
+    instagramLibs = instagram.values()
+
+    glideKaptLibs = glideKapt.values()
+
     testsLibs = tests.values()
     kotlinTestLibs = kotlinTest.values() + kotlinLibs + testsLibs
     androidTestsLibs = androidTests.values() + supportLibs + testsLibs + kotlinTestLibs

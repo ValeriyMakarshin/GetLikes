@@ -9,10 +9,14 @@ import com.getlikes.login.LoginInteractorImpl
 import com.getlikes.login.LoginPresenter
 import com.getlikes.main.MainContract
 import com.getlikes.main.MainPresenter
-import com.getlikes.main.choice.ChoiceContract
-import com.getlikes.main.choice.ChoiceInteractor
-import com.getlikes.main.choice.ChoiceInteractorImpl
-import com.getlikes.main.choice.ChoicePresenter
+import com.getlikes.main.choice.photo.ChoicePhotoContract
+import com.getlikes.main.choice.photo.ChoicePhotoInteractor
+import com.getlikes.main.choice.photo.ChoicePhotoInteractorImpl
+import com.getlikes.main.choice.photo.ChoicePhotoPresenter
+import com.getlikes.main.choice.photo.rate.ChoiceRateContract
+import com.getlikes.main.choice.photo.rate.ChoiceRatePresenter
+import com.getlikes.main.choice.root.ChoiceRootContract
+import com.getlikes.main.choice.root.ChoiceRootPresenter
 import com.getlikes.main.earncoins.EarnCoinsContract
 import com.getlikes.main.earncoins.EarnCoinsPresenter
 import com.getlikes.main.hashtags.HashTagsContract
@@ -67,8 +71,12 @@ class App : Application(), KodeinAware {
 
         bind<MainContract.Presenter>() with singleton { MainPresenter() }
 
-        bind<ChoiceInteractor>() with singleton { ChoiceInteractorImpl(instance()) }
-        bind<ChoiceContract.Presenter>() with singleton { ChoicePresenter(instance()) }
+        bind<ChoiceRootContract.Presenter>() with singleton { ChoiceRootPresenter() }
+
+        bind<ChoicePhotoInteractor>() with singleton { ChoicePhotoInteractorImpl(instance()) }
+        bind<ChoicePhotoContract.Presenter>() with singleton { ChoicePhotoPresenter(instance()) }
+
+        bind<ChoiceRateContract.Presenter>() with singleton { ChoiceRatePresenter() }
 
         bind<EarnCoinsContract.Presenter>() with singleton { EarnCoinsPresenter() }
 

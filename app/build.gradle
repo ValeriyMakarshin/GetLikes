@@ -7,7 +7,7 @@ apply plugin: 'io.fabric'
 def versionMajor = 0
 def versionMinor = 0
 def versionPatch = 0
-def versionBuild = 10
+def versionBuild = 11
 def versionSuffix = versionBuild > 0 ? "-beta" : ""
 
 android {
@@ -43,26 +43,18 @@ kapt {
 apply from: 'deps.gradle'
 
 dependencies {
-    implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation supportLibs
     implementation kotlinLibs
     implementation rxJavaLibs
     implementation retrofitLibs
     implementation okHttpLibs
     implementation kodeinLibs
-
-    debugImplementation stethoLibs
-
-
-    implementation "com.github.charlieAndroidDev:Instagram4Android:0.2.7"
-//    implementation moxyLibs
-
+    implementation glideLibs
+    implementation instagramLibs
     implementation('com.crashlytics.sdk.android:crashlytics:2.9.1@aar') {
         transitive = true
     }
-
-    kapt 'com.arello-mobile:moxy-compiler:1.5.3'
-
+    debugImplementation stethoLibs
 
     testImplementation kotlinTestLibs
 

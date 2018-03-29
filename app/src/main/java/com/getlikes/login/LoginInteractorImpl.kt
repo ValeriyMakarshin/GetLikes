@@ -1,6 +1,8 @@
 package com.getlikes.login
 
+import com.getlikes.model.Answer
 import com.getlikes.model.LoginModel
+import com.getlikes.model.Session
 import com.getlikes.network.Api
 import dev.niekirk.com.instagram4android.Instagram4Android
 import dev.niekirk.com.instagram4android.requests.payload.InstagramLoginResult
@@ -19,7 +21,7 @@ class LoginInteractorImpl(private val api: Api,
         }
     }
 
-    override fun loginApi(loginModel: LoginModel): Observable<Map<String, String>> {
+    override fun loginApi(loginModel: LoginModel): Observable<Answer<Session>> {
         return api.login(loginModel)
     }
 }

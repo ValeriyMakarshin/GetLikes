@@ -17,4 +17,8 @@ abstract class BaseHolder<T : Any>(itemView: View) : RecyclerView.ViewHolder(ite
     }
 
     abstract fun onDraw(item: T)
+
+    open fun onDrawHeader(){
+
+    }
 }
