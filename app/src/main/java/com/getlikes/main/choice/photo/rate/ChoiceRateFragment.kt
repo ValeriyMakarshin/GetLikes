@@ -7,7 +7,6 @@ import com.getlikes.core.ActivityInfo
 import com.getlikes.core.BaseFragment
 import com.getlikes.core.OnClickListener
 import com.github.salomonbrys.kodein.instance
-import kotlinx.android.synthetic.main.fragment_choice.*
 import kotlinx.android.synthetic.main.fragment_choice_rate.*
 
 class ChoiceRateFragment : BaseFragment<ChoiceRateContract.View, ChoiceRateContract.Presenter>(),
@@ -22,8 +21,8 @@ class ChoiceRateFragment : BaseFragment<ChoiceRateContract.View, ChoiceRateContr
         uiRateRv.layoutManager = LinearLayoutManager(context)
     }
 
-    override fun showList(list: List<Rates>) {
-        uiPhotoRv.adapter = RateAdapter(list.toTypedArray(), this)
+    override fun showList(array: Array<Rates>) {
+        uiRateRv.adapter = RateAdapter(array, this)
     }
 
     override fun onClick(item: Rates) {
