@@ -26,20 +26,27 @@ interface Navigator {
         }
 
         fun choicePhoto(fragmentManager: FragmentManager?, @IdRes containerViewId: Int) {
-            openFragment(fragmentManager, containerViewId, ChoicePhotoFragment())
+            openFragment(fragmentManager, ChoicePhotoFragment(), containerViewId)
         }
 
         fun choiceRate(fragmentManager: FragmentManager?, @IdRes containerViewId: Int) {
-            openFragment(fragmentManager, containerViewId, ChoiceRateFragment())
+            openFragment(fragmentManager, ChoiceRateFragment(), containerViewId, true)
         }
 
 
-        private fun openFragment(fragmentManager: FragmentManager?, @IdRes containerViewId: Int,
-                                 fragment: Fragment) {
+        private fun openFragment(fragmentManager: FragmentManager?, fragment: Fragment,
+                                 @IdRes containerViewId: Int, addInBackStack: Boolean = false) {
             fragmentManager?.run {
-                fragmentManager.beginTransaction()
-                    .add(containerViewId, fragment, fragment::class.toString())
-                    .commit()
+                val tag = fragment::class.toString()
+
+                val fragmentTransaction = fragmentManager.beginTransaction()
+                    .replace(containerViewId, fragment, tag)
+
+                if (addInBackStack) {
+                    fragmentTransaction.addToBackStack(tag)
+                }
+
+                fragmentTransaction.commit()
             }
         }
     }
