@@ -12,7 +12,9 @@ import com.github.salomonbrys.kodein.singleton
 class LoginKodein {
     companion object {
         fun initModule() = Kodein.Module {
-            bind<LoginInteractor>() with singleton { LoginInteractorImpl(instance(), instance()) }
+            bind<LoginInteractor>() with singleton {
+                LoginInteractorImpl(instance(), instance(), instance())
+            }
             bind<LoginContract.Presenter>() with singleton {
                 LoginPresenter(instance(), instance())
             }

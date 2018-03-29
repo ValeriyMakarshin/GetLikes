@@ -19,7 +19,6 @@ interface Api {
     fun balance(@Field("session_id") sessionId: String
     ): Observable<String>
 
-    @FormUrlEncoded
     @POST("task")
     fun task(@Body session: Session
     ): Observable<String>

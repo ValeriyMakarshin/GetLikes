@@ -1,5 +1,6 @@
 package com.getlikes.main.earncoins
 
+import android.util.Log
 import com.getlikes.core.BasePresenter
 
 class EarnCoinsPresenter(val earnCoinsInteractor: EarnCoinsInteractor) :
@@ -12,6 +13,8 @@ class EarnCoinsPresenter(val earnCoinsInteractor: EarnCoinsInteractor) :
     }
 
     fun getTask() {
-        earnCoinsInteractor.getTask()
+        baseObservable(earnCoinsInteractor.getTask(), {
+            Log.i("132", "132")
+        })
     }
 }
