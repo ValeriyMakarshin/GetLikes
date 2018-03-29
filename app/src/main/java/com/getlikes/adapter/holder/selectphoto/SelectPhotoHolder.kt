@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.getlikes.R
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
 import kotlinx.android.synthetic.main.view_photo.view.*
@@ -22,6 +23,7 @@ class SelectPhotoHolder(itemView: View) : SelectPhotoBaseHolder(itemView) {
         itemView.uiLikesTv.text = item.like_count.toString()
         Glide.with(itemView.context)
             .load(item.image_versions2.candidates.last().url)
+            .apply(RequestOptions.fitCenterTransform())
             .into(itemView.uiPhotoIv)
     }
 }

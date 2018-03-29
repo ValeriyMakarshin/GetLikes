@@ -4,6 +4,7 @@ import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
 import com.bumptech.glide.Glide
+import com.bumptech.glide.request.RequestOptions
 import com.getlikes.R
 import com.getlikes.main.choice.photo.rate.Rates
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
@@ -23,6 +24,7 @@ class RateHeader(itemView: View, val feedItem: InstagramFeedItem) : RateBaseHold
         itemView.uiLikesTv.text = feedItem.like_count.toString()
         Glide.with(itemView.context)
             .load(feedItem.image_versions2.candidates.last().url)
+            .apply(RequestOptions.fitCenterTransform())
             .into(itemView.uiPhotoIv)
     }
 
