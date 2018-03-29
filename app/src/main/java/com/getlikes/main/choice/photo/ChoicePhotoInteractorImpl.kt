@@ -5,7 +5,8 @@ import dev.niekirk.com.instagram4android.requests.InstagramUserFeedRequest
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedResult
 import io.reactivex.Observable
 
-class ChoicePhotoInteractorImpl(private val instagram4Android: Instagram4Android) : ChoicePhotoInteractor {
+class ChoicePhotoInteractorImpl(private val instagram4Android: Instagram4Android) :
+    ChoicePhotoInteractor {
 
     override fun getPhoto(): Observable<InstagramFeedResult> {
         return Observable.create<InstagramFeedResult> {
