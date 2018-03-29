@@ -12,7 +12,7 @@ class SelectPhotoHeader(itemView: View) : SelectPhotoBaseHolder(itemView) {
         fun creator(): (ViewGroup?) -> SelectPhotoHeader =
             { viewGroup ->
                 SelectPhotoHeader(LayoutInflater.from(viewGroup?.context)
-                    .inflate(R.layout.item_select_header, viewGroup, false))
+                    .inflate(R.layout.item_photo_header, viewGroup, false))
             }
     }
 

@@ -1,0 +1,56 @@
+<?xml version="1.0" encoding="utf-8"?>
+<android.support.constraint.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_height="match_parent"
+    android:layout_width="match_parent"
+    >
+
+    <ImageView
+        android:background="@color/colorPlaceholder"
+        android:id="@+id/uiPhotoIv"
+        android:layout_height="0dp"
+        android:layout_width="0dp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintDimensionRatio="1:1"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        />
+
+    <View
+        android:background="@color/colorMineShaft"
+        android:id="@+id/uiLikesPlaceholderV"
+        android:layout_height="40dp"
+        android:layout_width="wrap_content"
+        app:layout_constraintBottom_toBottomOf="@+id/uiPhotoIv"
+        app:layout_constraintEnd_toEndOf="@+id/uiPhotoIv"
+        app:layout_constraintStart_toStartOf="@+id/uiPhotoIv"
+        />
+
+    <TextView
+        android:drawablePadding="8dp"
+        android:drawableStart="@drawable/ic_heart_24dp"
+        android:gravity="center"
+        android:id="@+id/uiLikesTv"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        android:paddingEnd="8dp"
+        android:paddingStart="8dp"
+        android:textColor="@android:color/white"
+        app:layout_constraintBottom_toBottomOf="@+id/uiLikesPlaceholderV"
+        app:layout_constraintEnd_toEndOf="@+id/uiLikesPlaceholderV"
+        app:layout_constraintStart_toStartOf="@+id/uiLikesPlaceholderV"
+        app:layout_constraintTop_toTopOf="@+id/uiLikesPlaceholderV"
+        tools:text="123"
+        />
+
+    <android.support.constraint.Group
+        android:id="@+id/uiLikesG"
+        android:layout_height="wrap_content"
+        android:layout_width="wrap_content"
+        app:constraint_referenced_ids="uiLikesPlaceholderV,uiLikesTv"
+        />
+
+
+</android.support.constraint.ConstraintLayout>

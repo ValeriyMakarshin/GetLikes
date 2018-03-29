@@ -11,7 +11,7 @@ class RateHolder(itemView: View) : RateBaseHolder(itemView) {
         fun creator(): (ViewGroup?) -> RateHolder =
             { viewGroup ->
                 RateHolder(LayoutInflater.from(viewGroup?.context)
-                    .inflate(R.layout.item_select_header, viewGroup, false))
+                    .inflate(R.layout.item_rate, viewGroup, false))
             }
     }
 

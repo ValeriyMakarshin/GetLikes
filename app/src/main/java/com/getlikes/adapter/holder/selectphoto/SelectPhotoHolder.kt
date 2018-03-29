@@ -6,7 +6,7 @@ import android.view.ViewGroup
 import com.bumptech.glide.Glide
 import com.getlikes.R
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
-import kotlinx.android.synthetic.main.item_photo.view.*
+import kotlinx.android.synthetic.main.view_photo.view.*
 
 class SelectPhotoHolder(itemView: View) : SelectPhotoBaseHolder(itemView) {
 
