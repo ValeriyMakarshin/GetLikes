@@ -1,4 +1,4 @@
-package com.getlikes.start
+package com.getlikes.splash.start
 
 import com.getlikes.core.BasePresenter
 
