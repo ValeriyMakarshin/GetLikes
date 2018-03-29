@@ -19,7 +19,9 @@ class ChoiceKodein {
             bind<ChoiceRootContract.Presenter>() with singleton { ChoiceRootPresenter() }
 
             bind<ChoicePhotoInteractor>() with singleton { ChoicePhotoInteractorImpl(instance()) }
-            bind<ChoicePhotoContract.Presenter>() with singleton { ChoicePhotoPresenter(instance()) }
+            bind<ChoicePhotoContract.Presenter>() with singleton {
+                ChoicePhotoPresenter(instance())
+            }
 
             bind<ChoiceRateContract.Presenter>() with singleton { ChoiceRatePresenter() }
         }
