@@ -27,7 +27,7 @@
         </activity>
 
         <activity
-            android:name=".start.StartActivity"
+            android:name="com.getlikes.splash.start.StartActivity"
             android:screenOrientation="portrait"
             />
 

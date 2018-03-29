@@ -9,7 +9,7 @@ import com.getlikes.login.LoginActivity
 import com.getlikes.main.MainActivity
 import com.getlikes.main.choice.photo.ChoicePhotoFragment
 import com.getlikes.main.choice.photo.rate.ChoiceRateFragment
-import com.getlikes.start.StartActivity
+import com.getlikes.splash.start.StartActivity
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
 
 interface Navigator {
