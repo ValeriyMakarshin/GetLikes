@@ -1,6 +1,7 @@
 package com.getlikes
 
 import android.app.Application
+import android.content.Context
 import com.crashlytics.android.Crashlytics
 import com.getlikes.di.AppKodein
 import com.getlikes.login.LoginContract
@@ -27,11 +28,11 @@ import io.fabric.sdk.android.Fabric
 
 class App : Application(), KodeinAware {
     companion object {
-        const val TAG_INSTAGRAM = "tag_instagram"
+        lateinit var INSTANCE: App
     }
 
-    override val kodein by Kodein.lazy {
-        import(AppKodein.initModule(applicationContext))
+    override val kodein = Kodein {
+        import(AppKodein.initModule())
 
         bind<SplashInteractor>() with singleton { SplashInteractorImpl(instance()) }
         bind<SplashContract.Presenter>() with singleton { SplashPresenter(instance()) }
@@ -52,6 +53,8 @@ class App : Application(), KodeinAware {
 
     override fun onCreate() {
         super.onCreate()
+        INSTANCE = this
+
         Fabric.with(this, Crashlytics())
 
         NetworkUtils.init(this)

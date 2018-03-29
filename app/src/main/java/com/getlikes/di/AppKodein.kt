@@ -1,6 +1,7 @@
 package com.getlikes.di
 
 import android.content.Context
+import com.getlikes.App
 import com.getlikes.network.Api
 import com.getlikes.network.NetworkBase
 import com.getlikes.util.Strings
@@ -16,9 +17,12 @@ import dev.niekirk.com.instagram4android.Instagram4Android
 
 class AppKodein {
     companion object {
-        fun initModule(context: Context) = Kodein.Module {
+        fun initModule() = Kodein.Module {
+            bind<App>() with singleton { App.INSTANCE }
+
             bind<Storage>() with singleton {
-                StorageImpl(context.getSharedPreferences(context.packageName,
+                StorageImpl(instance<App>().getSharedPreferences(
+                    instance<App>().packageName,
                     Context.MODE_PRIVATE), Gson())
             }
 
