@@ -10,6 +10,7 @@ import com.getlikes.main.MainActivity
 import com.getlikes.main.choice.photo.ChoicePhotoFragment
 import com.getlikes.main.choice.photo.rate.ChoiceRateFragment
 import com.getlikes.start.StartActivity
+import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
 
 interface Navigator {
     companion object {
@@ -29,8 +30,10 @@ interface Navigator {
             openFragment(fragmentManager, ChoicePhotoFragment(), containerViewId)
         }
 
-        fun choiceRate(fragmentManager: FragmentManager?, @IdRes containerViewId: Int) {
-            openFragment(fragmentManager, ChoiceRateFragment(), containerViewId, true)
+        fun choiceRate(feedItem: InstagramFeedItem, fragmentManager: FragmentManager?,
+                       @IdRes containerViewId: Int) {
+            openFragment(fragmentManager, ChoiceRateFragment.newInstance(feedItem),
+                containerViewId, true)
         }
 
 

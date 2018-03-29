@@ -19,11 +19,14 @@ class RateHeader(itemView: View, val feedItem: InstagramFeedItem) : RateBaseHold
             }
     }
 
-    override fun onDraw(item: Rates) {
+    override fun onDrawHeader() {
         itemView.uiLikesTv.text = feedItem.like_count.toString()
         Glide.with(itemView.context)
             .load(feedItem.image_versions2.candidates.last().url)
             .into(itemView.uiPhotoIv)
     }
 
+    override fun onDraw(item: Rates) {
+
+    }
 }

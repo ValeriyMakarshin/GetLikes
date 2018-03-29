@@ -7,7 +7,7 @@ interface ChoicePhotoContract {
     interface View : BaseContract.View {
         fun showList(list: List<InstagramFeedItem>)
 
-        fun choiceRate()
+        fun choiceRate(feedItem: InstagramFeedItem)
     }
 
     interface Presenter : BaseContract.Presenter<View>

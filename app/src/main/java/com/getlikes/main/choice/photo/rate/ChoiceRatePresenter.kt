@@ -11,6 +11,7 @@ class ChoiceRatePresenter : BasePresenter<ChoiceRateContract.View>(),
     override fun parseArguments(extras: Bundle) {
         super.parseArguments(extras)
 
+        feedItem = extras.getSerializable(ChoiceRateFragment.EXTRA_FEED_ITEM) as InstagramFeedItem
     }
 
     override fun attach(view: ChoiceRateContract.View, bundle: Bundle?) {

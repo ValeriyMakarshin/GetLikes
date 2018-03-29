@@ -34,7 +34,10 @@ abstract class BaseRHeaderAdapter<T : Any, VH : BaseHolder<T>>(
             ITEM_VIEW_TYPE_ITEM
 
     override fun onBindViewHolder(holder: VH, position: Int) {
-        if (isHeader(position)) return
+        if (isHeader(position)) {
+            holder.onDrawHeader()
+            return
+        }
 
         holder.setData(items[position - 1])
         holder.setClickListener(onClickListener)

@@ -41,10 +41,10 @@ class ChoicePhotoFragment : BaseFragment<ChoicePhotoContract.View, ChoicePhotoCo
     }
 
     override fun onClick(item: InstagramFeedItem) {
-        choiceRate()
+        choiceRate(item)
     }
 
-    override fun choiceRate() {
-        Navigator.choiceRate(fragmentManager, R.id.uiContainerFl)
+    override fun choiceRate(feedItem: InstagramFeedItem) {
+        Navigator.choiceRate(feedItem, fragmentManager, R.id.uiContainerFl)
     }
 }
