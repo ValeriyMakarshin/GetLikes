@@ -3,6 +3,7 @@ package com.getlikes.network
 import com.getlikes.model.Answer
 import com.getlikes.model.LoginModel
 import com.getlikes.model.Session
+import com.getlikes.model.Task
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -21,7 +22,7 @@ interface Api {
 
     @POST("task")
     fun task(@Body session: Session
-    ): Observable<String>
+    ): Observable<Answer<Task>>
 
     @FormUrlEncoded
     @POST("skip")

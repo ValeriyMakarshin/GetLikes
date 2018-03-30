@@ -11,5 +11,5 @@ data class Answer<out D : Data>(
     val error: String,
 
     @Expose @SerializedName("data")
-    val data: D
+    val data: D?
 )

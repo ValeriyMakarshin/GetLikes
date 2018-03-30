@@ -12,8 +12,10 @@ class EarnCoinsPresenter(val earnCoinsInteractor: EarnCoinsInteractor) :
         getTask()
     }
 
-    fun getTask() {
+    private fun getTask() {
         baseObservable(earnCoinsInteractor.getTask(), {
+            Log.i("132", "132")
+        }, {
             Log.i("132", "132")
         })
     }

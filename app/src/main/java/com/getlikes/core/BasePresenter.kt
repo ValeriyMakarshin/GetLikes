@@ -2,6 +2,7 @@ package com.getlikes.core
 
 import android.os.Bundle
 import android.support.annotation.CallSuper
+import android.util.Log
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
@@ -51,6 +52,9 @@ open class BasePresenter<V : BaseContract.View> : BaseContract.Presenter<V> {
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
                 view?.showProgress()
+            }
+            .doOnError {
+                Log.e("132", "123")
             }
             .doOnTerminate {
                 unsubscribeSubscription()
