@@ -8,5 +8,7 @@ interface ChoiceRateContract {
         fun showList(array: Array<Rates>, feedItem: InstagramFeedItem)
     }
 
-    interface Presenter : BaseContract.Presenter<View>
+    interface Presenter : BaseContract.Presenter<View> {
+        fun orderLikes(rates: Rates)
+    }
 }

@@ -4,7 +4,7 @@ import com.getlikes.R
 import com.getlikes.core.BasePresenter
 import com.getlikes.model.Status
 
-class EarnCoinsPresenter(val earnCoinsInteractor: EarnCoinsInteractor) :
+class EarnCoinsPresenter(private val earnCoinsInteractor: EarnCoinsInteractor) :
     BasePresenter<EarnCoinsContract.View>(), EarnCoinsContract.Presenter {
 
     override fun loadData() {
@@ -20,8 +20,8 @@ class EarnCoinsPresenter(val earnCoinsInteractor: EarnCoinsInteractor) :
                     view?.showMessage(R.string.message_no_task)
                 }
                 Status.OK -> {
-                }
 
+                }
 
             }
         })

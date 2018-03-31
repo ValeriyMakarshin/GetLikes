@@ -19,4 +19,8 @@ class ChoiceRatePresenter : BasePresenter<ChoiceRateContract.View>(),
 
         view.showList(Rates.values(), feedItem)
     }
+
+    override fun orderLikes(rates: Rates) {
+
+    }
 }

@@ -42,7 +42,7 @@ class ChoiceRateFragment : BaseFragment<ChoiceRateContract.View, ChoiceRateContr
     }
 
     override fun onClick(item: Rates) {
-        TODO("not implemented")
+        presenter.orderLikes(item)
     }
 
 }

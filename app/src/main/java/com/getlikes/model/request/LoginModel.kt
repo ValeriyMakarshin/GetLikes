@@ -1,4 +1,4 @@
-package com.getlikes.model
+package com.getlikes.model.request
 
 import com.google.gson.annotations.Expose
 import com.google.gson.annotations.SerializedName

@@ -1,7 +1,7 @@
 package com.getlikes.network
 
 import com.getlikes.model.Answer
-import com.getlikes.model.LoginModel
+import com.getlikes.model.request.LoginModel
 import com.getlikes.model.Session
 import com.getlikes.model.Task
 import io.reactivex.Observable

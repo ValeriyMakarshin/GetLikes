@@ -2,7 +2,7 @@ package com.getlikes.login
 
 import com.getlikes.core.BasePresenter
 import com.getlikes.model.InstagramStatus
-import com.getlikes.model.LoginModel
+import com.getlikes.model.request.LoginModel
 import com.getlikes.util.TokenHolder
 import com.getlikes.util.storage.Storage
 
