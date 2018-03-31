@@ -5,5 +5,5 @@ import com.google.gson.annotations.SerializedName
 
 data class Session(
     @Expose @SerializedName("session_id")
-    val session_id: String
+    val sessionId: String
 ) : Data

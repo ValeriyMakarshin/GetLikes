@@ -1,9 +1,10 @@
 package com.getlikes.network
 
 import com.getlikes.model.Answer
-import com.getlikes.model.request.LoginModel
 import com.getlikes.model.Session
 import com.getlikes.model.Task
+import com.getlikes.model.request.LoginModel
+import com.getlikes.model.request.Order
 import io.reactivex.Observable
 import retrofit2.http.Body
 import retrofit2.http.Field
@@ -35,14 +36,7 @@ interface Api {
              @Field("media_id") mediaId: Long
     ): Observable<String>
 
-
-    @FormUrlEncoded
     @POST("order")
-    fun order(@Field("session_id") sessionId: String,
-              @Field("thumbnail_url") thumbnailUrl: String,
-              @Field("standard_resolution_url") standardResolutionUrl: String,
-              @Field("amount") amount: Int
-
-    ): Observable<String>
+    fun order(@Body order: Order): Observable<String>
 
 }

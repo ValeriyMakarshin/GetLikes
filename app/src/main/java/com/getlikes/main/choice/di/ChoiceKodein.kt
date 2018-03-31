@@ -5,6 +5,8 @@ import com.getlikes.main.choice.photo.ChoicePhotoInteractor
 import com.getlikes.main.choice.photo.ChoicePhotoInteractorImpl
 import com.getlikes.main.choice.photo.ChoicePhotoPresenter
 import com.getlikes.main.choice.photo.rate.ChoiceRateContract
+import com.getlikes.main.choice.photo.rate.ChoiceRateInteractor
+import com.getlikes.main.choice.photo.rate.ChoiceRateInteractorImpl
 import com.getlikes.main.choice.photo.rate.ChoiceRatePresenter
 import com.getlikes.main.choice.root.ChoiceRootContract
 import com.getlikes.main.choice.root.ChoiceRootPresenter
@@ -23,7 +25,10 @@ class ChoiceKodein {
                 ChoicePhotoPresenter(instance())
             }
 
-            bind<ChoiceRateContract.Presenter>() with singleton { ChoiceRatePresenter() }
+            bind<ChoiceRateInteractor>() with singleton {
+                ChoiceRateInteractorImpl(instance(), instance())
+            }
+            bind<ChoiceRateContract.Presenter>() with singleton { ChoiceRatePresenter(instance()) }
         }
     }
 }

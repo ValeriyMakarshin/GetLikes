@@ -4,8 +4,9 @@ import android.os.Bundle
 import com.getlikes.core.BasePresenter
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
 
-class ChoiceRatePresenter : BasePresenter<ChoiceRateContract.View>(),
-    ChoiceRateContract.Presenter {
+class ChoiceRatePresenter(val choiceRateInteractor: ChoiceRateInteractor) :
+    BasePresenter<ChoiceRateContract.View>(), ChoiceRateContract.Presenter {
+
     private lateinit var feedItem: InstagramFeedItem
 
     override fun parseArguments(extras: Bundle) {
