@@ -1,7 +1,8 @@
 package com.getlikes.main.earncoins
 
-import android.util.Log
+import com.getlikes.R
 import com.getlikes.core.BasePresenter
+import com.getlikes.model.Status
 
 class EarnCoinsPresenter(val earnCoinsInteractor: EarnCoinsInteractor) :
     BasePresenter<EarnCoinsContract.View>(), EarnCoinsContract.Presenter {
@@ -14,9 +15,15 @@ class EarnCoinsPresenter(val earnCoinsInteractor: EarnCoinsInteractor) :
 
     private fun getTask() {
         baseObservable(earnCoinsInteractor.getTask(), {
-            Log.i("132", "132")
-        }, {
-            Log.i("132", "132")
+            when (it.status) {
+                Status.ERROR -> {
+                    view?.showMessage(R.string.message_no_task)
+                }
+                Status.OK -> {
+                }
+
+
+            }
         })
     }
 }

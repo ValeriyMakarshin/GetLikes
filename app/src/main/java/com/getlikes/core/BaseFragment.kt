@@ -1,6 +1,7 @@
 package com.getlikes.core
 
 import android.os.Bundle
+import android.support.annotation.StringRes
 import android.view.LayoutInflater
 import android.view.View
 import android.view.ViewGroup
@@ -45,4 +46,9 @@ abstract class BaseFragment<in V : BaseContract.View, out P : BaseContract.Prese
 
     override fun hideProgress() {
     }
+
+    override fun showMessage(@StringRes messageId: Int) {
+        Toast.makeText(context, messageId, Toast.LENGTH_LONG).show()
+    }
+
 }
