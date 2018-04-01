@@ -19,5 +19,6 @@
     <string name="log_in">Log In</string>
 
     <string name="message_no_task">No tasks for you</string>
+    <string name="message_request_sent">Request has been sent</string>
 
 </resources>

@@ -1,6 +1,7 @@
 package com.getlikes.network
 
 import com.getlikes.model.Answer
+import com.getlikes.model.OrderStatus
 import com.getlikes.model.Session
 import com.getlikes.model.Task
 import com.getlikes.model.request.LoginModel
@@ -37,6 +38,6 @@ interface Api {
     ): Observable<String>
 
     @POST("order")
-    fun order(@Body order: Order): Observable<String>
+    fun order(@Body order: Order): Observable<Answer<OrderStatus>>
 
 }

@@ -22,14 +22,19 @@ class SignatureInterceptor : Interceptor {
 
         val request: Request = chain.request()
 
-        val map = Gson().fromJson<TreeMap<String, String>>(
+        val map = Gson().fromJson<TreeMap<String, Any>>(
             JsonUtils.bodyToString(request.body()),
             TreeMap::class.java)
 
         map[NAME_SIGNATURE] =
             CipherUtil.md5Hex(
                 map.values
-                    .joinToString(Strings.EMPTY)
+                    .joinToString(Strings.EMPTY, transform = {
+                        if (it is Double) {
+                            return@joinToString it.toInt().toString()
+                        }
+                        return@joinToString it.toString()
+                    })
                     .plus(SALT))
 
         val newRequest = Request.Builder()

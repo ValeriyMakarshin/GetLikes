@@ -1,7 +1,11 @@
 package com.getlikes.main.choice.photo.rate
 
 import android.os.Bundle
+import com.getlikes.R
 import com.getlikes.core.BasePresenter
+import com.getlikes.model.Status
+import com.getlikes.model.request.Order
+import com.getlikes.util.Strings
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
 
 class ChoiceRatePresenter(val choiceRateInteractor: ChoiceRateInteractor) :
@@ -22,6 +26,15 @@ class ChoiceRatePresenter(val choiceRateInteractor: ChoiceRateInteractor) :
     }
 
     override fun orderLikes(rates: Rates) {
+        val order = Order(Strings.EMPTY,
+            feedItem.image_versions2.candidates.last().url,
+            feedItem.image_versions2.candidates.last().url,
+            rates.coins)
 
+        baseObservable(choiceRateInteractor.orderLikes(order), {
+            if (it.status == Status.OK) {
+                view?.showMessage(R.string.message_request_sent)
+            }
+        })
     }
 }
