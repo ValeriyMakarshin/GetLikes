@@ -8,7 +8,7 @@ import com.getlikes.model.request.Order
 import com.getlikes.util.Strings
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
 
-class ChoiceRatePresenter(val choiceRateInteractor: ChoiceRateInteractor) :
+class ChoiceRatePresenter(private val choiceRateInteractor: ChoiceRateInteractor) :
     BasePresenter<ChoiceRateContract.View>(), ChoiceRateContract.Presenter {
 
     private lateinit var feedItem: InstagramFeedItem
@@ -27,7 +27,7 @@ class ChoiceRatePresenter(val choiceRateInteractor: ChoiceRateInteractor) :
 
     override fun orderLikes(rates: Rates) {
         val order = Order(Strings.EMPTY,
-            feedItem.image_versions2.candidates.last().url,
+            feedItem.image_versions2.candidates.first().url,
             feedItem.image_versions2.candidates.last().url,
             rates.coins)
 

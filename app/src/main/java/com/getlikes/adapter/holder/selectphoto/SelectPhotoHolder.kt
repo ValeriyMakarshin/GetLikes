@@ -21,9 +21,12 @@ class SelectPhotoHolder(itemView: View) : SelectPhotoBaseHolder(itemView) {
 
     override fun onDraw(item: InstagramFeedItem) {
         itemView.uiLikesTv.text = item.like_count.toString()
-        Glide.with(itemView.context)
-            .load(item.image_versions2.candidates.last().url)
-            .apply(RequestOptions.fitCenterTransform())
-            .into(itemView.uiPhotoIv)
+        item.image_versions2?.let {
+            Glide.with(itemView.context)
+                .load(it.candidates.last().url)
+                .apply(RequestOptions.fitCenterTransform())
+                .into(itemView.uiPhotoIv)
+
+        }
     }
 }
