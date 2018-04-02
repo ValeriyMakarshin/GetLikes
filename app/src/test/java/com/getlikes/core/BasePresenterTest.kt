@@ -13,7 +13,6 @@ import org.mockito.Mock
 import org.mockito.Spy
 import org.mockito.junit.MockitoJUnitRunner
 
-
 @RunWith(MockitoJUnitRunner::class)
 class BasePresenterTest {
     @Rule @JvmField val schedulers = RxHook()
