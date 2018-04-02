@@ -3,6 +3,7 @@ package com.getlikes.core
 import android.os.Bundle
 import com.getlikes.util.RxHook
 import com.nhaarman.mockito_kotlin.*
+import io.reactivex.Observable
 import io.reactivex.disposables.Disposable
 import org.junit.Assert
 import org.junit.Rule
@@ -71,6 +72,69 @@ class BasePresenterTest {
 
         verify(mockDisposable, never()).dispose()
         Assert.assertNotNull(spyBasePresenter.disposable)
+    }
+
+    @Test fun baseObservableTest() {
+        val expectedAny = Any()
+        val expectedObservable = Observable.just(expectedAny)
+        val mockFunctionSuccess: (Any) -> Unit = mock()
+        val mockFunctionError: (Throwable) -> Unit = mock()
+        spyBasePresenter.view = mockBaseView
+
+        spyBasePresenter.baseObservable(expectedObservable,
+            mockFunctionSuccess, mockFunctionError)
+
+        verify(mockBaseView).showProgress()
+        verify(mockBaseView).hideProgress()
+        verify(spyBasePresenter).unsubscribeSubscription()
+        verify(mockFunctionSuccess).invoke(expectedAny)
+        verify(mockFunctionError, never()).invoke(any())
+    }
+
+    @Test fun baseObservableTestThrowable() {
+        val expectedThrowable = Throwable()
+        val mockObservable = Observable.error<Any>(expectedThrowable)
+        val mockFunctionSuccess: (Any) -> Unit = mock()
+        val mockFunctionError: (Throwable) -> Unit = mock()
+        spyBasePresenter.view = mockBaseView
+
+        spyBasePresenter.baseObservable(mockObservable,
+            mockFunctionSuccess, mockFunctionError)
+
+        verify(mockBaseView).showProgress()
+        verify(mockBaseView).hideProgress()
+        verify(spyBasePresenter).unsubscribeSubscription()
+        verify(mockFunctionSuccess, never()).invoke(any())
+        verify(mockFunctionError).invoke(expectedThrowable)
+    }
+
+    @Test fun baseObservableTestBaseThrowable() {
+        val expectedThrowable = Throwable()
+        val mockObservable = Observable.error<Any>(expectedThrowable)
+        val mockFunctionSuccess: (Any) -> Unit = mock()
+        spyBasePresenter.view = mockBaseView
+
+        spyBasePresenter.baseObservable(mockObservable,
+            mockFunctionSuccess)
+
+        verify(mockBaseView).showProgress()
+        verify(mockBaseView).hideProgress()
+        verify(spyBasePresenter).unsubscribeSubscription()
+        verify(mockFunctionSuccess, never()).invoke(any())
+        verify(mockBaseView).showError(expectedThrowable)
+    }
+
+    @Test fun baseObservableTestDisposable() {
+        val mockDisposable: Disposable = mock()
+        val mockObservable = Observable.empty<Any>()
+        val mockFunctionSuccess: (Any) -> Unit = mock()
+        spyBasePresenter.view = mockBaseView
+        spyBasePresenter.disposable = mockDisposable
+
+        spyBasePresenter.baseObservable(mockObservable, mockFunctionSuccess)
+
+        verify(mockFunctionSuccess, never()).invoke(any())
+        verifyZeroInteractions(mockBaseView)
     }
 
 }
