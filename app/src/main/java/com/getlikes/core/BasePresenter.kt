@@ -2,15 +2,16 @@ package com.getlikes.core
 
 import android.os.Bundle
 import android.support.annotation.CallSuper
+import android.support.annotation.VisibleForTesting
 import io.reactivex.Observable
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
 
 open class BasePresenter<V : BaseContract.View> : BaseContract.Presenter<V> {
-    var view: V? = null
-    var bundle: Bundle? = null
-    var disposable: Disposable? = null
+    @VisibleForTesting var view: V? = null
+    @VisibleForTesting var bundle: Bundle? = null
+    @VisibleForTesting var disposable: Disposable? = null
 
     @CallSuper override fun attach(view: V, bundle: Bundle?) {
         this.view = view

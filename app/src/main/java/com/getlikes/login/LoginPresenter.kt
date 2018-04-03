@@ -1,5 +1,6 @@
 package com.getlikes.login
 
+import android.support.annotation.VisibleForTesting
 import com.getlikes.core.BasePresenter
 import com.getlikes.model.InstagramStatus
 import com.getlikes.model.LoginModel
@@ -24,7 +25,7 @@ class LoginPresenter(private val loginInteractor: LoginInteractor, private val s
             })
     }
 
-    private fun loginApi(username: String, userId: Long) {
+    @VisibleForTesting fun loginApi(username: String, userId: Long) {
         unsubscribeSubscription()
 
         baseObservable(loginInteractor.loginApi(LoginModel(username, userId.toString())), {
