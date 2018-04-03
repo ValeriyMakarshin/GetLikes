@@ -10,7 +10,7 @@ enum class InstagramStatus(val value: String) {
                 if (it.value == value)
                     return it
             }
-            return null
+            return FAIL
         }
     }
 }
