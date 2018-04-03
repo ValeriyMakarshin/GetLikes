@@ -7,7 +7,7 @@ apply plugin: 'io.fabric'
 def versionMajor = 0
 def versionMinor = 0
 def versionPatch = 0
-def versionBuild = 12
+def versionBuild = 13
 def versionSuffix = versionBuild > 0 ? "-beta" : ""
 
 android {
