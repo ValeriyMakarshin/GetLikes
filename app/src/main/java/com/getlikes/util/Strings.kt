@@ -20,31 +20,6 @@ class Strings {
         fun isEmpty(str: String?): Boolean {
             return str == null || str.isEmpty()
         }
-
-        fun generateToken(): String {
-            val now = Date()
-            val random = Random()
-            return md5(now.toString() + random.nextInt())
-        }
-
-        private fun md5(s: String): String {
-            try {
-                val digest = java.security.MessageDigest.getInstance("MD5")
-                digest.update(s.toByteArray())
-                val messageDigest = digest.digest()
-
-                val hexString = StringBuffer()
-                for (i in messageDigest.indices)
-                    hexString.append(Integer.toHexString(MOD_VALUE and messageDigest[i].toInt()))
-                return hexString.toString()
-
-            } catch (e: NoSuchAlgorithmException) {
-                e.printStackTrace()
-            }
-
-            return ""
-        }
-
     }
 
 }
