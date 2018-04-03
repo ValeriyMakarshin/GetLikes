@@ -1,9 +1,6 @@
 package com.getlikes.util
 
 import org.jetbrains.annotations.Contract
-import java.security.NoSuchAlgorithmException
-import java.util.*
-
 
 class Strings {
     companion object {
