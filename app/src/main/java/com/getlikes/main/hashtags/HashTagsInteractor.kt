@@ -1,3 +1,7 @@
 package com.getlikes.main.hashtags
 
-interface HashTagsInteractor
+import com.getlikes.model.TagGroup
+
+interface HashTagsInteractor {
+    fun getTagGroup(): TagGroup
+}
