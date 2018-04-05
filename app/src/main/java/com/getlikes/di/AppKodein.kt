@@ -28,7 +28,7 @@ class AppKodein {
         }
 
 
-        fun initModule() = Kodein.Module {
+        private fun initModule() = Kodein.Module {
             bind<App>() with singleton { App.INSTANCE }
 
             bind<Storage>() with singleton {

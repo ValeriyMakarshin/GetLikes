@@ -1,3 +1,5 @@
 package com.getlikes.main.hashtags
 
-class HashTagsInteractorImpl : HashTagsInteractor
+import android.content.Context
+
+class HashTagsInteractorImpl(val context: Context) : HashTagsInteractor
