@@ -22,7 +22,7 @@ class JsonUtils {
             return buffer.readUtf8()
         }
 
-        fun loadJSONFromInputStream(assetManager: AssetManager, filename: String): String? =
+        fun loadJSONFromAsset(assetManager: AssetManager, filename: String): String? =
             try {
                 val inputStream = assetManager.open(filename)
                 val size = inputStream.available()

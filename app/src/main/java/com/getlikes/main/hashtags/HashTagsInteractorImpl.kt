@@ -14,7 +14,7 @@ class HashTagsInteractorImpl(val context: Context, val gson: Gson) : HashTagsInt
 
     override fun getTagGroup(): Single<TagGroup> {
         return Single.create<TagGroup> { single ->
-            JsonUtils.loadJSONFromInputStream(context.assets, filename)
+            JsonUtils.loadJSONFromAsset(context.assets, filename)
                 ?.let {
                     JsonUtils.parseToObject<TagGroup>(gson, it, TagGroup::class.java)
                         ?.let {
