@@ -3,7 +3,7 @@ package com.getlikes.core
 import android.os.Bundle
 import android.support.annotation.CallSuper
 import android.support.annotation.VisibleForTesting
-import io.reactivex.Observable
+import io.reactivex.Single
 import io.reactivex.android.schedulers.AndroidSchedulers
 import io.reactivex.disposables.Disposable
 import io.reactivex.schedulers.Schedulers
@@ -41,19 +41,19 @@ open class BasePresenter<V : BaseContract.View> : BaseContract.Presenter<V> {
         }
     }
 
-    fun <T> baseObservable(observable: Observable<T>,
+    fun <T> baseObservable(single: Single<T>,
                            functionSuccess: (T) -> Unit = {},
                            functionError: (Throwable) -> Unit = {
                                view?.showError(it)
                            }) {
         if (disposable != null) return
-        disposable = observable
+        disposable = single
             .subscribeOn(Schedulers.io())
             .observeOn(AndroidSchedulers.mainThread())
             .doOnSubscribe {
                 view?.showProgress()
             }
-            .doOnTerminate {
+            .doAfterTerminate {
                 unsubscribeSubscription()
                 view?.hideProgress()
             }

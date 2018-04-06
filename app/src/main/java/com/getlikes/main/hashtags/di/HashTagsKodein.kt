@@ -12,7 +12,9 @@ import com.github.salomonbrys.kodein.singleton
 class HashTagsKodein {
     companion object {
         fun initModule() = Kodein.Module {
-            bind<HashTagsInteractor>() with singleton { HashTagsInteractorImpl(instance()) }
+            bind<HashTagsInteractor>() with singleton {
+                HashTagsInteractorImpl(instance(), instance())
+            }
             bind<HashTagsContract.Presenter>() with singleton { HashTagsPresenter(instance()) }
         }
     }

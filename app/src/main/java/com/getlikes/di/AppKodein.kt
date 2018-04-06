@@ -31,10 +31,12 @@ class AppKodein {
         private fun initModule() = Kodein.Module {
             bind<App>() with singleton { App.INSTANCE }
 
+            bind<Gson>() with singleton { Gson() }
+
             bind<Storage>() with singleton {
                 StorageImpl(instance<App>().getSharedPreferences(
                     instance<App>().packageName,
-                    Context.MODE_PRIVATE), Gson())
+                    Context.MODE_PRIVATE), instance())
             }
 
             bind<TokenHolder>() with singleton { TokenHolder(instance()) }

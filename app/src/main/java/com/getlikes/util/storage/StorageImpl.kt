@@ -1,6 +1,7 @@
 package com.getlikes.util.storage
 
 import android.content.SharedPreferences
+import com.getlikes.util.JsonUtils
 import com.getlikes.util.Strings
 import com.google.gson.Gson
 import java.io.IOException
@@ -11,11 +12,7 @@ class StorageImpl(private val sp: SharedPreferences, private val gson: Gson) : S
     override fun <T> getObject(key: String, clazz: Type): T? {
         val json = sp.getString(key, Strings.EMPTY)
         if (!Strings.isEmpty(json)) {
-            try {
-                return gson.fromJson(json, Type::class.java) as T
-            } catch (e: IOException) {
-                e.printStackTrace()
-            }
+            return JsonUtils.parseToObject(gson, json, clazz)
         }
         return null
     }
