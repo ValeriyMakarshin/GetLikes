@@ -4,10 +4,10 @@ import com.getlikes.model.Answer
 import com.getlikes.model.LoginModel
 import com.getlikes.model.Session
 import dev.niekirk.com.instagram4android.requests.payload.InstagramLoginResult
-import io.reactivex.Observable
+import io.reactivex.Single
 
 interface LoginInteractor {
-    fun loginInstagram(login: String, password: String): Observable<InstagramLoginResult>
+    fun loginInstagram(login: String, password: String): Single<InstagramLoginResult>
 
-    fun loginApi(loginModel: LoginModel): Observable<Answer<Session>>
+    fun loginApi(loginModel: LoginModel): Single<Answer<Session>>
 }
