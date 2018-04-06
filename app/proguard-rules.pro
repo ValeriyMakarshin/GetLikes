@@ -20,15 +20,26 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
+# OkHttp
+-keepattributes Signature
+-keepattributes *Annotation*
+-keep class okhttp3.** { *; }
+-keep interface okhttp3.** { *; }
+-dontwarn okhttp3.**
+
 # Stetho
 -keep class com.facebook.stetho.** { *; }
 -dontwarn com.facebook.stetho.**
 
 # Retrofit
--dontnote retrofit2.Platform
--dontwarn retrofit2.Platform$Java8
--keepattributes Exceptions
+-dontwarn retrofit2.**
+-keep class retrofit2.** { *; }
 -keepattributes Signature
+-keepattributes Exceptions
+
+-keepclasseswithmembers class * {
+    @retrofit2.http.* <methods>;
+}
 
 # Instagram4Android
 -keep class com.github.charlieAndroidDev.**
