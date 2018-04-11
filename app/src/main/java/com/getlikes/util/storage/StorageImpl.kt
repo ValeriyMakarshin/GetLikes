@@ -4,7 +4,6 @@ import android.content.SharedPreferences
 import com.getlikes.util.JsonUtils
 import com.getlikes.util.Strings
 import com.google.gson.Gson
-import java.io.IOException
 import java.lang.reflect.Type
 
 class StorageImpl(private val sp: SharedPreferences, private val gson: Gson) : Storage {
