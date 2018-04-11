@@ -20,12 +20,11 @@
 # hide the original source file name.
 #-renamesourcefileattribute SourceFile
 
-# OkHttp
--keepattributes Signature
--keepattributes *Annotation*
--keep class okhttp3.** { *; }
--keep interface okhttp3.** { *; }
+# OkHttp3
 -dontwarn okhttp3.**
+-dontwarn okio.**
+-dontwarn javax.annotation.**
+-dontwarn org.conscrypt.**
 
 # Stetho
 -keep class com.facebook.stetho.** { *; }
@@ -45,6 +44,20 @@
 -keep class com.github.charlieAndroidDev.**
 -dontwarn com.github.charlieAndroidDev
 
+# Lombok in Instagram4Android
+-dontwarn lombok.**
+
+# Proguard configuration for Jackson 2.x (fasterxml package instead of codehaus package)
+-keep class com.fasterxml.jackson.databind.ObjectMapper {
+    public <methods>;
+    protected <methods>;
+}
+-keep class com.fasterxml.jackson.databind.ObjectWriter {
+    public ** writeValueAsString(**);
+}
+-keepnames class com.fasterxml.jackson.** { *; }
+-dontwarn com.fasterxml.jackson.databind.**
+
 # Glide
 -keep public class * implements com.bumptech.glide.module.GlideModule
 -keep public class * extends com.bumptech.glide.module.AppGlideModule
@@ -53,3 +66,4 @@
   public *;
 }
 -dontwarn com.bumptech.glide.load.resource.bitmap.VideoDecoder
+
