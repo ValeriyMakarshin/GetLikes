@@ -22,7 +22,7 @@ class HashTagsInteractorImpl(val context: Context, val gson: Gson) : HashTagsInt
                         }
                         ?: single.onError(JsonParseException("Bad tagGroup json"))
                 }
-                ?: single.onError(AssertionError())
+                ?: single.onError(AssertionError("Not found file with tags"))
         }
     }
 }
