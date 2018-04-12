@@ -1,4 +1,4 @@
-package com.getlikes.main.hashtags
+package com.getlikes.main.tags
 
 import android.content.Context
 import com.getlikes.model.TagGroup
@@ -7,7 +7,7 @@ import com.google.gson.Gson
 import com.google.gson.JsonParseException
 import io.reactivex.Single
 
-class HashTagsInteractorImpl(val context: Context, val gson: Gson) : HashTagsInteractor {
+class CategoriesInteractorImpl(val context: Context, val gson: Gson) : CategoriesInteractor {
     companion object {
         const val filename = "tags.json"
     }

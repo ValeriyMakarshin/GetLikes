@@ -12,7 +12,7 @@ class MainKodein {
         fun initModule() = Kodein.Module {
             import(ChoiceKodein.initModule())
             import(EarnCoinsKodein.initModule())
-            import(HashTagsKodein.initModule())
+            import(TagsKodein.initModule())
 
             bind<MainContract.Presenter>() with singleton { MainPresenter() }
         }

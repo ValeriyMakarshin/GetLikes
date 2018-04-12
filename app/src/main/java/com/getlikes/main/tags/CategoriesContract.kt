@@ -1,9 +1,9 @@
-package com.getlikes.main.hashtags
+package com.getlikes.main.tags
 
 import com.getlikes.core.BaseContract
 import com.getlikes.model.Category
 
-interface HashTagsContract {
+interface CategoriesContract {
     interface View : BaseContract.View {
         fun showList(categories: ArrayList<Category>)
     }

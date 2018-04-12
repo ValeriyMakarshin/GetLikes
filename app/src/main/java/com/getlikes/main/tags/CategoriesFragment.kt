@@ -1,4 +1,4 @@
-package com.getlikes.main.hashtags
+package com.getlikes.main.tags
 
 import android.support.v7.widget.LinearLayoutManager
 import com.getlikes.R
@@ -9,10 +9,10 @@ import com.getlikes.model.Category
 import com.github.salomonbrys.kodein.instance
 import kotlinx.android.synthetic.main.fragment_hashtags.*
 
-class HashTagsFragment : BaseFragment<HashTagsContract.View, HashTagsContract.Presenter>(),
-    HashTagsContract.View {
+class CategoriesFragment : BaseFragment<CategoriesContract.View, CategoriesContract.Presenter>(),
+    CategoriesContract.View {
 
-    override val presenter: HashTagsContract.Presenter by instance()
+    override val presenter: CategoriesContract.Presenter by instance()
 
     override val activityInfo: ActivityInfo = ActivityInfo(R.layout.fragment_hashtags)
 
@@ -22,7 +22,7 @@ class HashTagsFragment : BaseFragment<HashTagsContract.View, HashTagsContract.Pr
     }
 
     override fun showList(categories: ArrayList<Category>) {
-        uiTagsRv.adapter = CategoriesAdapter()
+        uiTagsRv.adapter = CategoriesAdapter(categories.toTypedArray())
     }
 
 }
