@@ -1,4 +1,4 @@
-package com.getlikes.main.tags
+package com.getlikes.main.categories
 
 import com.getlikes.core.BaseContract
 import com.getlikes.model.Category

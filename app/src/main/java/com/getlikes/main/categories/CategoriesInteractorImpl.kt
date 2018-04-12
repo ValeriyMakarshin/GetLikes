@@ -1,4 +1,4 @@
-package com.getlikes.main.tags
+package com.getlikes.main.categories
 
 import android.content.Context
 import com.getlikes.model.TagGroup

@@ -8,7 +8,7 @@ import com.getlikes.R
 import com.getlikes.core.BaseFragment
 import com.getlikes.main.choice.root.ChoiceRootFragment
 import com.getlikes.main.earncoins.EarnCoinsFragment
-import com.getlikes.main.tags.CategoriesFragment
+import com.getlikes.main.categories.CategoriesFragment
 
 
 class MainPagerAdapter(private val fm: FragmentManager,
