@@ -6,7 +6,7 @@
     >
 
     <android.support.v7.widget.RecyclerView
-        android:id="@+id/uiTagsRv"
+        android:id="@+id/uiCategoriesRv"
         android:layout_height="0dp"
         android:layout_width="0dp"
         app:layout_constraintBottom_toBottomOf="parent"
@@ -14,6 +14,5 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
         />
-
 
 </android.support.constraint.ConstraintLayout>
