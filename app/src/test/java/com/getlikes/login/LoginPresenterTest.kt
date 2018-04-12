@@ -19,13 +19,12 @@ class LoginPresenterTest {
     @Rule @JvmField val schedulers = RxHook()
 
     @Mock private lateinit var mockLoginInteractor: LoginInteractor
-    @Mock private lateinit var mockStorage: Storage
     @Mock private lateinit var mockLoginView: LoginContract.View
 
     lateinit var spyLoginPresenter: LoginPresenter
 
     @Before fun setUp() {
-        spyLoginPresenter = spy(LoginPresenter(mockLoginInteractor, mockStorage))
+        spyLoginPresenter = spy(LoginPresenter(mockLoginInteractor))
         spyLoginPresenter.view = mockLoginView
     }
 

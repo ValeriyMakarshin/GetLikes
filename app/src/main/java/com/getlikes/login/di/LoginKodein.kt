@@ -16,7 +16,7 @@ class LoginKodein {
                 LoginInteractorImpl(instance(), instance(), instance())
             }
             bind<LoginContract.Presenter>() with singleton {
-                LoginPresenter(instance(), instance())
+                LoginPresenter(instance())
             }
         }
     }
