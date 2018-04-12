@@ -7,9 +7,10 @@ import android.support.v4.app.Fragment
 import android.support.v4.app.FragmentManager
 import com.getlikes.login.LoginActivity
 import com.getlikes.main.MainActivity
-import com.getlikes.main.tags.hashtags.HashtagsFragment
 import com.getlikes.main.choice.photo.ChoicePhotoFragment
 import com.getlikes.main.choice.photo.rate.ChoiceRateFragment
+import com.getlikes.main.tags.categories.CategoriesFragment
+import com.getlikes.main.tags.hashtags.HashtagsFragment
 import com.getlikes.model.Category
 import com.getlikes.splash.start.StartActivity
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
@@ -36,6 +37,10 @@ interface Navigator {
                        @IdRes containerViewId: Int) {
             openFragment(fragmentManager, ChoiceRateFragment.newInstance(feedItem),
                 containerViewId, true)
+        }
+
+        fun tagCategories(fragmentManager: FragmentManager?, @IdRes containerViewId: Int) {
+            openFragment(fragmentManager, CategoriesFragment(), containerViewId)
         }
 
         fun hashTags(category: Category,

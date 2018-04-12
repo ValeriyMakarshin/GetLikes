@@ -8,7 +8,8 @@ import com.getlikes.R
 import com.getlikes.core.BaseFragment
 import com.getlikes.main.choice.root.ChoiceRootFragment
 import com.getlikes.main.earncoins.EarnCoinsFragment
-import com.getlikes.main.tags.CategoriesFragment
+import com.getlikes.main.tags.TagsRootFragment
+import com.getlikes.main.tags.categories.CategoriesFragment
 
 
 class MainPagerAdapter(private val fm: FragmentManager,
@@ -25,12 +26,12 @@ class MainPagerAdapter(private val fm: FragmentManager,
         fragments = if (fm.fragments.size == 0) {
             arrayOf(
                 ChoiceRootFragment(),
-                CategoriesFragment(),
+                TagsRootFragment(),
                 EarnCoinsFragment())
         } else {
             arrayOf(
                 getFragmentFromManager(ChoiceRootFragment::class.java) as BaseFragment<*, *>,
-                getFragmentFromManager(CategoriesFragment::class.java) as BaseFragment<*, *>,
+                getFragmentFromManager(TagsRootFragment::class.java) as BaseFragment<*, *>,
                 getFragmentFromManager(EarnCoinsFragment::class.java) as BaseFragment<*, *>)
         }
 

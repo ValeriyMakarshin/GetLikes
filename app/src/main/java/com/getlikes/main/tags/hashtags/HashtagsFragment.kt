@@ -27,6 +27,6 @@ class HashtagsFragment : BaseFragment<HashtagsContract.View, HashtagsContract.Pr
 
     override val presenter: HashtagsContract.Presenter by instance()
 
-    override val activityInfo: ActivityInfo = ActivityInfo(R.layout.fragment_hashtags)
+    override val activityInfo: ActivityInfo = ActivityInfo(R.layout.fragment_tags_subcategories)
 
 }

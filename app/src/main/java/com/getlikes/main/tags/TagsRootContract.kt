@@ -1,10 +1,10 @@
-package com.getlikes.main.choice.root
+package com.getlikes.main.tags
 
 import com.getlikes.core.BaseContract
 
-interface ChoiceRootContract {
+interface TagsRootContract {
     interface Navigator {
-        fun choicePhoto()
+        fun choiceCategory()
     }
 
     interface View : BaseContract.View, Navigator
