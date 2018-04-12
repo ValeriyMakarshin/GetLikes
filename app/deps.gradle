@@ -14,7 +14,7 @@ ext {
             moxy      : '1.5.3',
             glide     : '4.6.1',
             instagram : '0.2.7',
-            multidex  : '1.0.3',
+            multidex  : '1.0.1',
             test      : '1.0.1',
             junit     : '4.12',
             mockito   : '2.11.0',
