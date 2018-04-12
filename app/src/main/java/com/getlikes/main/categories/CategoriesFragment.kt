@@ -1,6 +1,7 @@
 package com.getlikes.main.categories
 
 import android.support.v7.widget.LinearLayoutManager
+import com.getlikes.Navigator
 import com.getlikes.R
 import com.getlikes.adapter.CategoriesAdapter
 import com.getlikes.core.ActivityInfo
@@ -27,7 +28,7 @@ class CategoriesFragment : BaseFragment<CategoriesContract.View, CategoriesContr
     }
 
     override fun onClick(item: Category) {
-
+//        Navigator.hashTags(item, fragmentManager, )
     }
 
 }
