@@ -7,7 +7,7 @@ class LoginPresenter(private val loginInteractor: LoginInteractor, private val s
     BasePresenter<LoginContract.View>(), LoginContract.Presenter {
 
     override fun loginInstagram(login: String, password: String) {
-        baseObservable(loginInteractor.loginInstagram(login, password), {
+        baseSingle(loginInteractor.loginInstagram(login, password), {
             view?.goToMain()
         })
     }

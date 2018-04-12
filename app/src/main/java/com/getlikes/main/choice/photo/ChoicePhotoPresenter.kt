@@ -6,7 +6,7 @@ class ChoicePhotoPresenter(private val choicePhotoInteractor: ChoicePhotoInterac
     BasePresenter<ChoicePhotoContract.View>(), ChoicePhotoContract.Presenter {
 
     override fun loadData() {
-        baseObservable(choicePhotoInteractor.getPhoto(),
+        baseSingle(choicePhotoInteractor.getPhoto(),
             {
                 view?.showList(it.items)
             })

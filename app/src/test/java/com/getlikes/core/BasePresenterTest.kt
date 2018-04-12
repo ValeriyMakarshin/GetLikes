@@ -73,14 +73,14 @@ class BasePresenterTest {
         Assert.assertNull(spyBasePresenter.disposable)
     }
 
-    @Test fun baseObservableTest() {
+    @Test fun baseSingleTest() {
         val expectedAny = Any()
         val expectedSingle = Single.just(expectedAny)
         val mockFunctionSuccess: (Any) -> Unit = mock()
         val mockFunctionError: (Throwable) -> Unit = mock()
         spyBasePresenter.view = mockBaseView
 
-        spyBasePresenter.baseObservable(expectedSingle,
+        spyBasePresenter.baseSingle(expectedSingle,
             mockFunctionSuccess, mockFunctionError)
 
         verify(mockBaseView).showProgress()
@@ -90,14 +90,14 @@ class BasePresenterTest {
         verify(mockFunctionError, never()).invoke(any())
     }
 
-    @Test fun baseObservableTestThrowable() {
+    @Test fun baseSingleTestThrowable() {
         val expectedThrowable = Throwable()
         val expectedSingle = Single.error<Any>(expectedThrowable)
         val mockFunctionSuccess: (Any) -> Unit = mock()
         val mockFunctionError: (Throwable) -> Unit = mock()
         spyBasePresenter.view = mockBaseView
 
-        spyBasePresenter.baseObservable(expectedSingle,
+        spyBasePresenter.baseSingle(expectedSingle,
             mockFunctionSuccess, mockFunctionError)
 
         verify(mockBaseView).showProgress()
@@ -107,13 +107,13 @@ class BasePresenterTest {
         verify(mockFunctionError).invoke(expectedThrowable)
     }
 
-    @Test fun baseObservableTestBaseThrowable() {
+    @Test fun baseSingleTestBaseThrowable() {
         val expectedThrowable = Throwable()
         val expectedSingle = Single.error<Any>(expectedThrowable)
         val mockFunctionSuccess: (Any) -> Unit = mock()
         spyBasePresenter.view = mockBaseView
 
-        spyBasePresenter.baseObservable(expectedSingle,
+        spyBasePresenter.baseSingle(expectedSingle,
             mockFunctionSuccess)
 
         verify(mockBaseView).showProgress()
@@ -123,14 +123,14 @@ class BasePresenterTest {
         verify(mockBaseView).showError(expectedThrowable)
     }
 
-    @Test fun baseObservableTestDisposable() {
+    @Test fun baseSingleTestDisposable() {
         val expectedSingle = Single.just(Any())
         val mockDisposable: Disposable = mock()
         val mockFunctionSuccess: (Any) -> Unit = mock()
         spyBasePresenter.view = mockBaseView
         spyBasePresenter.disposable = mockDisposable
 
-        spyBasePresenter.baseObservable(expectedSingle, mockFunctionSuccess)
+        spyBasePresenter.baseSingle(expectedSingle, mockFunctionSuccess)
 
         verify(mockFunctionSuccess, never()).invoke(any())
         verifyZeroInteractions(mockBaseView)

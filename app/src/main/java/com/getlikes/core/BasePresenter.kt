@@ -41,9 +41,9 @@ open class BasePresenter<V : BaseContract.View> : BaseContract.Presenter<V> {
         disposable = null
     }
 
-    fun <T> baseObservable(single: Single<T>,
-                           functionSuccess: (T) -> Unit = {},
-                           functionError: (Throwable) -> Unit = {
+    fun <T> baseSingle(single: Single<T>,
+                       functionSuccess: (T) -> Unit = {},
+                       functionError: (Throwable) -> Unit = {
                                view?.showError(it)
                            }) {
         if (disposable != null) return

@@ -41,7 +41,7 @@ class LoginPresenterTest {
         verify(mockLoginView).goToMain()
     }
 
-    @Test fun loginInstagramTestError() {
+    @Test fun loginInstagramTestThrowable() {
         val expectedThrowable = Throwable()
         doReturn(Single.error<Answer<Session>>(expectedThrowable))
             .`when`(mockLoginInteractor).loginInstagram(any(), any())

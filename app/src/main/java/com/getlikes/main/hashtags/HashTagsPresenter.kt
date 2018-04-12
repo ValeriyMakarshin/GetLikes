@@ -6,7 +6,7 @@ class HashTagsPresenter(val hashTagsInteractor: HashTagsInteractor) :
     BasePresenter<HashTagsContract.View>(), HashTagsContract.Presenter {
 
     override fun loadData() {
-        baseObservable(hashTagsInteractor.getTagGroup(), {
+        baseSingle(hashTagsInteractor.getTagGroup(), {
 
         })
     }
