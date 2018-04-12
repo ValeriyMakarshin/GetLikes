@@ -1,4 +1,4 @@
-package com.getlikes.main.categories.hashtags
+package com.getlikes.main.tags.hashtags
 
 import com.getlikes.core.BaseContract
 

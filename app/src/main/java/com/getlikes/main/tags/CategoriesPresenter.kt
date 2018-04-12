@@ -1,4 +1,4 @@
-package com.getlikes.main.categories
+package com.getlikes.main.tags
 
 import com.crashlytics.android.Crashlytics
 import com.getlikes.core.BasePresenter

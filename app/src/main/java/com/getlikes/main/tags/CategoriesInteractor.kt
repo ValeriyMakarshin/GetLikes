@@ -1,4 +1,4 @@
-package com.getlikes.main.categories
+package com.getlikes.main.tags
 
 import com.getlikes.model.TagGroup
 import io.reactivex.Single

@@ -1,4 +1,4 @@
-package com.getlikes.main.categories.hashtags
+package com.getlikes.main.tags.hashtags
 
 import android.os.Bundle
 import com.getlikes.R

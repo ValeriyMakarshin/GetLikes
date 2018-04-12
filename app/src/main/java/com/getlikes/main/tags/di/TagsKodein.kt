@@ -1,11 +1,11 @@
 package com.getlikes.main.di
 
-import com.getlikes.main.categories.CategoriesContract
-import com.getlikes.main.categories.CategoriesInteractor
-import com.getlikes.main.categories.CategoriesInteractorImpl
-import com.getlikes.main.categories.CategoriesPresenter
-import com.getlikes.main.categories.hashtags.HashtagsContract
-import com.getlikes.main.categories.hashtags.HashtagsPresenter
+import com.getlikes.main.tags.CategoriesContract
+import com.getlikes.main.tags.CategoriesInteractor
+import com.getlikes.main.tags.CategoriesInteractorImpl
+import com.getlikes.main.tags.CategoriesPresenter
+import com.getlikes.main.tags.hashtags.HashtagsContract
+import com.getlikes.main.tags.hashtags.HashtagsPresenter
 import com.github.salomonbrys.kodein.Kodein
 import com.github.salomonbrys.kodein.bind
 import com.github.salomonbrys.kodein.instance

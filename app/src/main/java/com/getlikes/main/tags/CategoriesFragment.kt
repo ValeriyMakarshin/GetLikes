@@ -1,7 +1,6 @@
-package com.getlikes.main.categories
+package com.getlikes.main.tags
 
 import android.support.v7.widget.LinearLayoutManager
-import com.getlikes.Navigator
 import com.getlikes.R
 import com.getlikes.adapter.CategoriesAdapter
 import com.getlikes.core.ActivityInfo
