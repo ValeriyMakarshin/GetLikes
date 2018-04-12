@@ -7,7 +7,5 @@ import dev.niekirk.com.instagram4android.requests.payload.InstagramLoginResult
 import io.reactivex.Single
 
 interface LoginInteractor {
-    fun loginInstagram(login: String, password: String): Single<InstagramLoginResult>
-
-    fun loginApi(loginModel: LoginModel): Single<Answer<Session>>
+    fun loginInstagram(login: String, password: String): Single<Answer<Session>>
 }

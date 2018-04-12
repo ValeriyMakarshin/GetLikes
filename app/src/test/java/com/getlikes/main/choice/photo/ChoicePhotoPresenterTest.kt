@@ -6,7 +6,7 @@ import com.nhaarman.mockito_kotlin.mock
 import com.nhaarman.mockito_kotlin.verify
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedItem
 import dev.niekirk.com.instagram4android.requests.payload.InstagramFeedResult
-import io.reactivex.Observable
+import io.reactivex.Single
 import org.junit.Rule
 import org.junit.Test
 import org.junit.runner.RunWith
@@ -23,7 +23,7 @@ class ChoicePhotoPresenterTest {
         }
         val mockChoicePhotoView: ChoicePhotoContract.View = mock()
         val mockChoicePhotoInteractor: ChoicePhotoInteractor = mock {
-            on { getPhoto() }.thenReturn(Observable.just(mockInstagramFeedResult))
+            on { getPhoto() }.thenReturn(Single.just(mockInstagramFeedResult))
         }
         val choicePhotoPresenter = ChoicePhotoPresenter(mockChoicePhotoInteractor)
         choicePhotoPresenter.view = mockChoicePhotoView

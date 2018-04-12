@@ -31,6 +31,7 @@ android {
         }
         debug {
             minifyEnabled false
+            multiDexEnabled true
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
     }
@@ -43,6 +44,8 @@ kapt {
 apply from: 'deps.gradle'
 
 dependencies {
+    compile 'com.android.support:multidex:1.0.1'
+
     implementation supportLibs
     implementation kotlinLibs
     implementation rxJavaLibs

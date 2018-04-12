@@ -37,8 +37,8 @@ open class BasePresenter<V : BaseContract.View> : BaseContract.Presenter<V> {
     override fun unsubscribeSubscription() {
         if (disposable?.isDisposed == false) {
             disposable?.dispose()
-            disposable = null
         }
+        disposable = null
     }
 
     fun <T> baseObservable(single: Single<T>,
