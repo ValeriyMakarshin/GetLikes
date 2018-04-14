@@ -45,6 +45,6 @@ class ChoicePhotoFragment : BaseFragment<ChoicePhotoContract.View, ChoicePhotoCo
     }
 
     override fun choiceRate(feedItem: InstagramFeedItem) {
-        Navigator.choiceRate(feedItem, fragmentManager, R.id.uiContainerFl)
+        Navigator.choiceRate(feedItem, fragmentManager, R.id.uiChoiceContainerFl)
     }
 }

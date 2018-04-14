@@ -14,6 +14,6 @@ class TagsRootFragment : BaseFragment<TagsRootContract.View, TagsRootContract.Pr
     override val activityInfo: ActivityInfo = ActivityInfo(R.layout.fragment_tags_root)
 
     override fun choiceCategory() {
-        Navigator.tagCategories(fragmentManager, R.id.uiContainerFl)
+        Navigator.tagCategories(fragmentManager, R.id.uiTagContainerFl)
     }
 }
